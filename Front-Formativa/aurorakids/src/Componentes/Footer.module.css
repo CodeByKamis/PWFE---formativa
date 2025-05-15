@@ -1,0 +1,31 @@
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #93D9D8;
+    height: 76px;
+    margin:0;
+}
+
+.logo{
+    width: 70px;
+    height: 65px;
+    margin: 0;
+}
+
+.footerp{
+    margin-left: 5px;
+    color: #112A46;
+    font-weight:700;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footerpezin{
+    color: #112A46;
+    font-weight:700;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}

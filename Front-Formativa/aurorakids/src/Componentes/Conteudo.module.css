@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    align-items: start; /*eu quero que meus itens fiquem perto do limite da esquerda*/
+    background-color: black;
+    color: rgba(251, 152,60);
+    height: 90vh;
+    background-image: url(https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); /*nn é recomendado pois se a img sair do google, cabou-se a imagem*/
+    background-position: center;
+    background-repeat: no-repeat; /*impede q a imagem repita ao decorrer da pagina em tile (repetido em blocos)*/
+}

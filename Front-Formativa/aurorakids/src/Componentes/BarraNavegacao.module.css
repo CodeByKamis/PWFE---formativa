@@ -1,0 +1,71 @@
+.container{
+    display:flex;
+    justify-content: center;
+    background-color: #93D9D8;
+    height: 101px;
+}
+
+/* nao use esses ul e li se nn vai mudar TODO O codigo que tem essas tag */
+.navgbarra{
+    list-style: none;
+    margin-right: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: row; /*deixar ele deitado*/
+}
+
+.navgbarrinha{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    color: #112A46;
+    font-weight:700;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 65px;
+    margin-top: 18px;
+    margin-right: 47px;
+}
+/* para quando passar o mouse em cima, é tipo um houver */
+.navgbarrinha a:active{
+    color: rgb(138, 76, 97);
+    text-decoration: none;
+}
+
+.navbutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 31px;
+    width: 191px;
+    background-color: #112A46;
+    color: rgba(236, 233, 228);
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.nava{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.nava a:active{
+    transform: translateY(2px);
+    box-shadow: 0 2px #2e7d32;
+}
+
+a{
+    text-decoration: none;
+}
