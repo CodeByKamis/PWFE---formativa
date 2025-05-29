@@ -1,44 +1,52 @@
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
 .container{
+    font-family: "Poppins", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80hv;
+    width: 96%;
+    height: 787px;
 }
 
 .loginform{
     width: 100%;
     max-width: 500px;
     height: auto;
-    background-color: aqua;
+    background-color: #93D9D8;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgb(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
 .titulo{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
+    font-size: 30px;
+    font-weight: bolder;
     text-align: center;
-    color: rgb(255,115, 14);
+    color: #112A46;
     margin-bottom: 25px;
 }
 
 .label{
     padding: 15px;
     font-size: 5px;
-    color: rgb(80,80,79);
+    color: #112A46;
     font-size: 14px;
+    font-weight: 600;
     margin: 5px;
 }
 
 .inputField{
     padding: 10px;
     font-size: 16px;
-    color: rgb(80,80,79);
+    color: #112A46;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -52,7 +60,6 @@
 
 .submitButton{
     width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
     background-color: rgba(251,152,60,0);
     font-size: 16px;
     font-weight: bold;
@@ -60,13 +67,13 @@
     margin-top: 30px;
     border-radius: 8px;
     border: none;
-    color: rgb(217, 188, 243);
+    color: rgba(236, 233, 228);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .submitButton{
-    background-color: rgba(222,155,14,0.9);
+    background-color: #112A46;
 }
 
 .error{

@@ -1,6 +1,14 @@
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
 .container{
+    font-family: "Poppins", sans-serif;
     display: flex;
-    align-items: start; /*eu quero que meus itens fiquem perto do limite da esquerda*/
+    align-items: start; /*serve para quando eu quero que meus itens fiquem perto do limite da esquerda*/
     background-color: black;
     color: rgba(251, 152,60);
     height: 90vh;

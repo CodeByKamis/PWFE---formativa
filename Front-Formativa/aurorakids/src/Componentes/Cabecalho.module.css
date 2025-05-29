@@ -1,4 +1,11 @@
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
 .conteiner{
+    font-family: "Poppins", sans-serif;
     background-color: rgb(1,1,10);
     height: 125px;
 }
@@ -6,7 +13,6 @@
 .hzinho{
     font-size: 90px;
     color: rgba(251, 152,60);
-    font-family: Arial, Helvetica, sans-serif;
     margin-left: 50px;
     justify-content: center;
     text-align: center;

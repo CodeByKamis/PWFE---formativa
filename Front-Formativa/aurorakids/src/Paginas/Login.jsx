@@ -7,10 +7,18 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 // ZODRESOLVER - Ele manda as mensagens de erro para a tela do usuario
 import estilos from './Login.module.css';
+import { BarraNavegacao } from '../Componentes/BarraNavegacao';
+import { Footer } from '../Componentes/Footer';
+import { useNavigate } from 'react-router-dom';
 
 // vai validando as informações que vai receber do usuario
-const schemaLogin = z.object({
-    username: z.string()
+
+
+
+export function Login(){
+    const navigate = useNavigate()
+    const schemaLogin = z.object({
+        username: z.string()
         .min (1, 'Informe o seu usuário corretamente')
         .max (255, 'Informe no máximo 255 caracteres'),
 
@@ -19,9 +27,6 @@ const schemaLogin = z.object({
         .max(255, 'Informe no máximo 255 caracteres'),
         
 });
-
-
-export function Login(){
     // é necessario consumir tudo o que for colocado dentro dos campos do formulario
     // esse const serve para registrar todas as info que são dadas pelo usuario p/ tentar resolver de acordo com o schemaLogin :)
     // Kamila não é muito dificil, vai dar bom
@@ -48,14 +53,15 @@ export function Login(){
             localStorage.setItem('access_token', access)
             localStorage.setItem('refresh_token', refresh)
             localStorage.setItem('tipo', user.tipo)
-            localStorage.setItem('username', username)
-
+            localStorage.setItem('username', data.username)
+            console.log(response.data)
             console.log("Login efetuado com sucesso")
-            alert(`Seja bem-vindo(a) ${username}`)
+            alert(`Seja bem-vindo(a) ${data.username}`)
+            navigate('/inicial') //redireciona para a pagina login
 
             // colocar a porta de entrada
         }catch(error){
-            console.error('Erro! Tente novamente.', error);
+            console.error('Erro! Tente novamente.', error.response);
             alert("Dados Inválidos")
         }
     }
@@ -66,34 +72,39 @@ export function Login(){
 
 
     return(
-        <div className={estilos.container}>
-            {/* form lido, relido e processado */}
-            <form onSubmit={handleSubmit(ObterDados)} className={estilos.loginform}>
+        <>
+            <BarraNavegacao/>
+        
+            <div className={estilos.container}>
+                {/* form lido, relido e processado */}
+                <form onSubmit={handleSubmit(ObterDados)} className={estilos.loginform}>
 
-                <h2 className={estilos.titulo}>Fazer login</h2>
+                    <h2 className={estilos.titulo}>Fazer login</h2>
 
-                <label className={estilos.label}>Usuário</label>
-                <input className={estilos.inputField}
-                // os 3 pontos serve para quebrar uma array ou algo assim - tenho um objeto e ele tem nome, duracao, ano, genero, o ... quebra isso em nome: tal; ano: tal;
-                    {...register('username')}
-                    placeholder='kamila vitoria'
-                />
-                {errors.username && <p className={estilos.error}>{errors.username.message}</p>}
+                    <label className={estilos.label}>Usuário</label>
+                    <input className={estilos.inputField}
+                    // os 3 pontos serve para quebrar uma array ou algo assim - tenho um objeto e ele tem nome, duracao, ano, genero, o ... quebra isso em nome: tal; ano: tal;
+                        {...register('username')}
+                        placeholder='kamila vitoria'
+                    />
+                    {errors.username && <p className={estilos.error}>{errors.username.message}</p>}
 
-                {/* && faz concatenização react com o uso de tags*/}
+                    {/* && faz concatenização react com o uso de tags*/}
 
 
 
-                <label className={estilos.label}>Senha:</label>
-                <input
-                    {...register('password')}
-                    placeholder='Senha'
-                    type="password"//serve para aparecer as bolinhas na senha
-                />
-                {errors.password && <p className={estilos.error}>{errors.password.message}</p>}
+                    <label className={estilos.label}>Senha:</label>
+                    <input className={estilos.inputField}
+                        {...register('password')}
+                        placeholder='Senha'
+                        type="password"//serve para aparecer as bolinhas na senha
+                    />
+                    {errors.password && <p className={estilos.error}>{errors.password.message}</p>}
 
-                <button type='submit' className={estilos.submitButton}>Fazer Login</button>
-            </form>
-        </div>
+                    <button type='submit' className={estilos.submitButton}>Fazer Login</button>
+                </form>
+            </div>
+            <Footer/>
+        </>
     )
 }

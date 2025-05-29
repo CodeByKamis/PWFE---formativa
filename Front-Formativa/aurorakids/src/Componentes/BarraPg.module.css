@@ -7,7 +7,9 @@
 
 .container{
     display:flex;
-    justify-content: center;
+    justify-content:center;
+    padding-left: 450px;
+    padding-right: 450px;
     background-color: #93D9D8;
     height: 101px;
     font-family: "Poppins", sans-serif;
@@ -74,4 +76,26 @@
 
 a{
     text-decoration: none;
+}
+
+.logout{
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 65px;
+    margin-top: 18px;
+    margin-right: 47px;
+    color: #112A46;
+    font-weight:700;
+}
+
+.logout:hover{
+    text-decoration: none;
+}
+
+link{
+    text-decoration: underline;
 }

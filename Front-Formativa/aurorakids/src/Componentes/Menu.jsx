@@ -3,7 +3,7 @@ import ambienteimg from '../assets/ambiente.png';
 import disciplinaimg from '../assets/disciplina.png';
 import gestoresimg from '../assets/gestores.png';
 import professoresimg from '../assets/professores.png';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -14,8 +14,10 @@ export function Menu(){
                 <tbody>
                     <tr> {/*linhas*/}
                         <td className={estilos.menutd}> {/*celular/colunas dentro das linhas*/}
-                            <img src={disciplinaimg} alt="É um ícone que representa as disciplinas" />
-                            <label alt='Disciplinas do professor'>Disciplinas</label> {/*cuidado onde coloca o alt, ele deve ser colocado no loal correto*/}
+                            <Link to='/profdisciplina'>
+                                <img src={disciplinaimg} alt="É um ícone que representa as disciplinas" />
+                                <label alt='Disciplinas do professor'>Disciplinas</label> {/*cuidado onde coloca o alt, ele deve ser colocado no loal correto*/}
+                            </Link>
                         </td>
                         <td className={estilos.menutd}>
                             <img src={ambienteimg} alt="É um ícone que representa o ambiente" />

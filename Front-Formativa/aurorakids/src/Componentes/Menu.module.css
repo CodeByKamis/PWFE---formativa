@@ -1,6 +1,13 @@
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
 .container{
+    font-family: "Poppins", sans-serif;
     width: 96%;
-    height: 80;
+    height: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,6 +36,5 @@
     margin-top: 5px;
     color: rgb(112,112,111);
     font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
 
 }
