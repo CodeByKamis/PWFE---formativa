@@ -1,4 +1,11 @@
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
 .containerCard{
+        font-family: "Poppins", sans-serif;
         width: 1080px;
         max-width: 1000px;
         background-color: #93D9D8;
@@ -20,7 +27,7 @@
 .tituloCard{
     font-size: 28px;
     font-weight: bold;
-    color: #444;
+    color: #112A46;
     margin-bottom: 30px;
 }
 
@@ -31,9 +38,15 @@
     width: 100%;
 }
 
+.nome{
+    font-size: 18px;
+    color: #112A46;
+    margin-bottom: 10px;
+}
+
 .card{
     background-color: #f9f9f9;
-    border-left: 6px solid #e0a;
+    border-left: 6px solid #112A46;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -41,13 +54,6 @@
 }
 
 .card:hover{
-    background-color: #e0a;
-    color: #f9f9f9;
+    background-color: #d5f8f8;
     transform: scale(1.02);
-}
-
-.nome{
-    font-size: 18px;
-    color: orange;
-    margin-bottom: 10px;
 }

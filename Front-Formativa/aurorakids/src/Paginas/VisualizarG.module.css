@@ -1,0 +1,159 @@
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.containerM{
+    height: 800px;
+}
+.container{
+    width: 1500px;
+    max-width: 1200px;
+    height: 800px;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 90%;
+    margin: 40px auto;
+    background-color: hsl(180, 50%, 92%);
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.titulo{
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    text-align: center;
+    color: #f06000;
+    margin-bottom: 25px;
+}
+
+.tabelaWrapper{
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.tabeladados{
+    width: 100%;
+    background-color: rgba(255,255,255,0.95);
+    padding: 20px;
+    border-radius: 16px;
+    border:none;
+    box-sizing: 0 8px 20px rgba(0,0,0,0.25);
+    table-layout: auto;
+    border-collapse: collapse;
+}
+
+.tabeladados thead{
+    background-color: #93D9D8;
+    color: #f9f9f9;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tabeladados th,
+.tabeladados td{
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    color: #112A46;
+    word-break: break-word;
+}
+
+.cabecalho:hover{
+    color: #d3d3d3;
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px;
+    transition: all 0.2s ease-in-out;
+}
+
+.icone{
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    gap:10px;
+}
+
+.topoAcoes{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.botaoAdicionar{
+    display: flex;
+    align-items: center;
+    background-color: #fb983c;
+    color:#d5f8f8;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.iconeAdd{
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.containerCard{
+        display: flex;
+        font-family: "Poppins", sans-serif;
+        width: 1080px;
+        max-width: 1000px;
+        background-color: #93D9D8;
+        border-radius: 30px;
+        padding: 30px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        flex-direction: column;
+        height: 800px;
+        align-items: center;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 20px;
+        margin-bottom: 40px;
+
+        
+}
+
+.tituloCard{
+    font-size: 28px;
+    font-weight: bold;
+    color: #112A46;
+    margin-bottom: 30px;
+}
+
+.listaCard{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 2fr));
+    gap:20px;
+    width: 100%;
+}
+
+.nome{
+    font-size: 18px;
+    color: #112A46;
+    margin-bottom: 10px;
+}
+
+.card{
+    background-color: #f9f9f9;
+    border-left: 6px solid #112A46;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover{
+    background-color: #d5f8f8;
+    transform: scale(1.02);
+}

@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 export function BarraPg(){
     return(
         <nav className={estilos.container}>
-                <Link to="/Inicial">
-                    <img className={estilos.logo} src={logo} alt="É a logo do projeto" />  
+                <Link to='/inicial'>
+                    <p className={estilos.logout}>Home</p>
                 </Link>
+                 
+                <img className={estilos.logo} src={logo} alt="É a logo do projeto" />  
 
                 <Link to="/">
                     <p className={estilos.logout}>Logout</p>
