@@ -1,9 +1,9 @@
 import {Routes, Route} from 'react-router-dom';
 import { Login } from '../Paginas/Login';
 import { Inicial } from '../Paginas/Inicial';
-import { Menu } from '../Componentes/Menu';
-import { DisciplinasProfessor } from '../Paginas/DisciplinasProfessor'
-import { DisciplinasGestor } from '../Paginas/DisciplinasGestor'
+import { DisciplinasProfessor } from '../Paginas/DisciplinasProfessor';
+import { DisciplinasGestor } from '../Paginas/DisciplinasGestor';
+import { DisciplinaCadastrar } from '../Paginas/DisciplinaCadastrar';
 
 export function Rotas(){
     return(
@@ -12,6 +12,7 @@ export function Rotas(){
                 <Route path='/inicial' element={<Inicial/>}/>
                 <Route path='/inicial/profdisciplina' element={<DisciplinasProfessor/>}/>
                 <Route path='/inicial/disciplina' element={<DisciplinasGestor/>}/>
+                <Route path='/inicial/adicionardisciplina' element={<DisciplinaCadastrar/>}/>
 
             </Routes>    
     )

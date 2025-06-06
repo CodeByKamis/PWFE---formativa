@@ -3,6 +3,7 @@ import React,{useState, useEffect} from 'react';
 import estilos from './VisualizarG.module.css';
 import { BarraPg } from '../Componentes/BarraPg';
 import { Footer } from '../Componentes/Footer';
+import { Link } from 'react-router-dom';
 import more from '../assets/more.svg';
 import edit from '../assets/edit.svg';
 import dell from '../assets/dell.svg';
@@ -33,9 +34,9 @@ export function DisciplinasGestor(){
             }
         })
         .then(response =>{
-            const professorporId ={}
-            response.data.array.forEach(prof => {
-                professorporId[prof.id] = `${prof.first_name} ${prof.last_name}`;
+            const professorporId ={};
+            response.data.forEach(prof => {
+                professorporId[prof.id] = `${prof.first_name} ${prof.last_name}`; //ou ${prof.username}
             });
             setProfessores(professorporId);
         })
@@ -51,7 +52,9 @@ export function DisciplinasGestor(){
                 <div className={estilos.container}>
                     <h3 className={estilos.title}>DISCIPLINAS</h3>
                     <div className={estilos.topoAcoes}>
-                        <img className={estilos.iconeAdd} src={more} alt='Adicionar disciplina' />
+                        <Link to="/inicial/adicionardisciplina" className={estilos.botaoAdicionar}>
+                            <img className={estilos.iconeAdd} src={more} alt='Adicionar disciplina' />
+                        </Link>
                     </div>
                     <div className={estilos.tabelaWrapper}>
                         <table className={estilos.tabeladados}>
@@ -59,8 +62,8 @@ export function DisciplinasGestor(){
                                 <tr className={estilos.cabecalho}>
                                     <th>Nome</th>
                                     <th>Curso</th>
-                                    <th>Carga Horária</th>
                                     <th>Descrição</th>
+                                    <th>Carga Horária</th>
                                     <th>Professor</th>
                                     <th>Ação</th>
                                 </tr>
@@ -84,7 +87,7 @@ export function DisciplinasGestor(){
                     </div>
                 </div>
             </main>
-             <Footer/>
+            <Footer/>
         </>
     );
 }

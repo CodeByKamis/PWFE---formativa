@@ -85,7 +85,7 @@ export function Login(){
                     <input className={estilos.inputField}
                     // os 3 pontos serve para quebrar uma array ou algo assim - tenho um objeto e ele tem nome, duracao, ano, genero, o ... quebra isso em nome: tal; ano: tal;
                         {...register('username')}
-                        placeholder='kamila vitoria'
+                        placeholder='Escreva aqui'
                     />
                     {errors.username && <p className={estilos.error}>{errors.username.message}</p>}
 
