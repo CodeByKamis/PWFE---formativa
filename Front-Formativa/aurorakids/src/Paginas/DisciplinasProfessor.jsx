@@ -1,7 +1,7 @@
 import axios from 'axios'; //axios é o que permite que chamemos uma API :D SEJA BEST DELE ( PÁGINA HTTP(S) )
 import React,{useState, useEffect} from 'react'; //state guarda o estado atual da variavel
 //effect mostra isso em tela
-import estilos from './VisualizarP.module.css';
+import estilos from './DisciplinasProfessor.module.css';
 import { BarraPg } from '../Componentes/BarraPg';
 import { Footer } from '../Componentes/Footer';
 

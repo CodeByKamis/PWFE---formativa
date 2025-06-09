@@ -1,99 +1,113 @@
 import { useForm } from 'react-hook-form';
-import estilos from './DisciplinaCadastrar.module.css';
-import { z } from 'zod'; //valida tudo o que a gente digita
+import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
-import { useState, useEffect }from 'react';
+import estilos from './DisciplinaEditar.module.css';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { BarraPg } from '../Componentes/BarraPg';
 import { Footer } from '../Componentes/Footer';
-
-
-const schemaDisciplinas = z.object({
+import seta from '../assets/seta.svg';
+const schemaDisciplina = z.object({
     nome: z.string()
-        .min(1, 'Informe o nome da disciplina')
-        .max(255, 'Informe no máximo 255 caracteres'),
+        .min(1, 'Informe ao menos um caractere')
+        .max(100, 'Informe até 255 caracteres'),
 
     curso: z.string()
-        .min(1, 'Informe o nome do curso')
-        .max(255, 'Informe no máximo 255 caracteres'),
+        .min(1, 'Informe ao menos um caractere')
+        .max(100, 'Informe até 255 caracteres'),
 
-    carga_horaria: z.number(
-        {invalid_type_error: 'Informe uma carga horária'})
-            .int("Digite um valor inteiro")
-            .min(1, 'Informe o valor da carga horária')
-            .max(3, 'A carga horária é de até 260 horas'),
+    cargaHoraria: z.number({
+        invalid_type_error: 'Informe a cargahorária'})
+        .int("Deve ser um número inteiro")
+        .min(1, "A carga horária mínima é 1 hora")
+        .max(260, "A carga horária máxima é 260 horas"),
 
     descricao: z.string()
-        .min(1, 'Informe uma descricao')
-        .max(255, 'Informe uma descricao'),
-    
-    professor: z.number(
-        {invalid_type_error: 'Adicione um professor'})
-            .min(1, 'Selecioone um professor')
-    
+        .min(1, 'Informe ao menos um caractere')
+        .max(300, 'Informe até 300 caracteres'),
+
+    professor: z.number({
+        invalid_type_error: 'Selecione um professor'
+            }).min(1, 'Selecione um professor')
 });
-
-export function DisciplinaCadastrar(){
+ 
+export function DisciplinaEditar() {
+ 
     const [professores, setProfessores] = useState([]);
-
-    const{
+    const { id } = useParams();
+    const navigate = useNavigate();
+ 
+    const {
         register,
         handleSubmit,
-        formState:{ errors},
+        formState: { errors },
         reset
     } = useForm({
-        resolver: zodResolver(schemaDisciplinas)
+        resolver: zodResolver(schemaDisciplina)
     });
-
-    useEffect(()=>{
+ 
+    useEffect(() => {
         async function buscarProfessores() {
-            try{
+            try {
                 const token = localStorage.getItem('access_token');
-                const response= await axios.get('http://127.0.0.1:8000/api/usuario/',{
-                    headers:{
+                const response = await axios.get('http://127.0.0.1:8000/api/usuario/', {
+                    headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
                 setProfessores(response.data);
-            
-            }catch(error){
-                console.error("erro ao carregar professores", error);
+                //Preenche o formulários com os dados do registro do ID
+                 const resDisciplina = await axios.get(`http://127.0.0.1:8000/api/disciplina/${id}/`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+ 
+                // Preenche o formulário
+                reset(resDisciplina.data);
+ 
+            } catch (error) {
+                console.error("Erro ao carregar professores", error);
             }
         }
         buscarProfessores();
-    },[]);
-    
+    }, []);
+ 
     async function obterDadosFormulario(data) {
-        console.log("dados do formulario", data);
-
-        try{
+      console.log("Dados do formulário:", data);
+        try {
             const token = localStorage.getItem('access_token');
-            const response  = await axios.post(
-                'http://127.0.0.1:8000/api/disciplina/', 
+ 
+            const response = await axios.put(
+                `http://127.0.0.1:8000/api/disciplina/${id}/`,
                 data,
                 {
-                    headers:{
+                    headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 }
             );
-            console.log('Disciplina cadastrada com sucesso', response.data);
-            alert("Disciplina cadastrada com sucesso!");
+ 
+            console.log('Disciplina cadastrado com sucesso!', response.data);
+            alert('Disciplina cadastrado com sucesso!');
             reset();
-        }catch(error){
+            navigate('/inicial/disciplina');
+ 
+        } catch (error) {
             console.error('Erro ao cadastrar disciplina', error);
             alert("Erro ao cadastrar disciplina");
-        } 
+        }
     }
+ 
     return (
         <>
-        <BarraPg/>
-            <div className={estilos.conteiner}>
-            
+            <BarraPg/>
+
+
+            <div className={estilos.conteiner}>                 
                 <form className={estilos.loginForm} onSubmit={handleSubmit(obterDadosFormulario)}>
-                        <h2 className={estilos.titulo}>Cadastro de Disciplina</h2>
-                        <label className ={estilos.nomeCampo}>Nome da Disciplina</label>
+                        <h2 className={estilos.titulo}>Editar a Disciplina</h2>
+                        <label className ={estilos.nomeCampo} >Nome da Disciplina</label>
                         <input                        
                             className={estilos.inputField}
                             {...register('nome')}
@@ -117,11 +131,11 @@ export function DisciplinaCadastrar(){
     
                             className={estilos.inputField}
                             {...register('cargaHoraria', { valueAsNumber: true })}
-                            placeholder="80"
+                            placeholder="75"
                         />
-                        {errors.carga_horaria &&
+                        {errors.cargaHoraria &&
                         <p className={estilos.error}>
-                            {errors.carga_horaria.message}
+                            {errors.cargaHoraria.message}
                         </p>}
                 
     
@@ -154,7 +168,7 @@ export function DisciplinaCadastrar(){
                     </div>
                 </form>
             </div>
-        <Footer/>
+            <Footer/>
         </>
     );
 }

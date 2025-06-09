@@ -84,22 +84,10 @@
     margin-bottom: 15px;
 }
 
-.botaoAdicionar{
-    display: flex;
-    align-items: center;
-    background-color: #fb983c;
-    color:#d5f8f8;
-    text-decoration: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
 
 .iconeAdd{
     width: 20px;
     height: 20px;
-    margin-right: 8px;
     cursor: pointer;
 }
 
@@ -155,4 +143,58 @@
 .card:hover{
     background-color: #d5f8f8;
     transform: scale(1.02);
+}
+
+/* Container da célula da coluna Ação */
+.tabeladados td:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* espaço entre os botões */
+}
+
+/* Ajuste no botão excluir para centralizar o conteúdo */
+.botaoExcluir {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #93D9D8;
+  color: #d5f8f8;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.botaoExcluir:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.botaoAdicionar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #93D9D8;
+  color: #d5f8f8;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.botaoAdicionar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Ícones menores para caber melhor nos botões */
+.icone {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  pointer-events: none; /* para evitar que o clique no ícone atrapalhe o botão */
 }

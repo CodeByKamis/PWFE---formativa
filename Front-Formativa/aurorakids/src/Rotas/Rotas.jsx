@@ -4,6 +4,7 @@ import { Inicial } from '../Paginas/Inicial';
 import { DisciplinasProfessor } from '../Paginas/DisciplinasProfessor';
 import { DisciplinasGestor } from '../Paginas/DisciplinasGestor';
 import { DisciplinaCadastrar } from '../Paginas/DisciplinaCadastrar';
+import { DisciplinaEditar } from '../Paginas/DisciplinaEditar';
 
 export function Rotas(){
     return(
@@ -12,7 +13,8 @@ export function Rotas(){
                 <Route path='/inicial' element={<Inicial/>}/>
                 <Route path='/inicial/profdisciplina' element={<DisciplinasProfessor/>}/>
                 <Route path='/inicial/disciplina' element={<DisciplinasGestor/>}/>
-                <Route path='/inicial/adicionardisciplina' element={<DisciplinaCadastrar/>}/>
+                <Route path='adicionardisciplina' element={<DisciplinaCadastrar/>}/>
+                <Route path='editardisciplina' element={<DisciplinaEditar/>}/>
 
             </Routes>    
     )

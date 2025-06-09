@@ -1,0 +1,56 @@
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.conteiner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 789px;
+    font-family: "Poppins", sans-serif;
+}
+.loginForm{
+    width: 950px;
+    height: 800px;
+    gap: 10px;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    
+    margin: 40px auto;
+    background-color: hsl(180, 50%, 92%);
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.titulo{
+    color: #112A46;
+}
+.nomeCampo{
+    color: #112A46;
+    font-family: "Poppins", sans-serif;
+}
+
+.inputField{
+    background-color: rgba(255,255,255,0.95);
+    border-radius: 6px;
+
+}
+
+.submitButton{
+    margin-top: 10px;
+    background-color: #93D9D8;
+    color: #112A46;
+    border-radius: 6px;
+    
+}
+
+.submitButton:hover{
+    background-color: #112A46;
+    color: #d5f8f8;
+    
+}

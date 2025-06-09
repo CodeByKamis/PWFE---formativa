@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React,{useState, useEffect} from 'react';
-import estilos from './VisualizarG.module.css';
+import React, { useState, useEffect } from 'react';
+import estilos from './DisciplinasGestor.module.css';
 import { BarraPg } from '../Componentes/BarraPg';
 import { Footer } from '../Componentes/Footer';
 import { Link } from 'react-router-dom';
@@ -44,7 +44,25 @@ export function DisciplinasGestor(){
             console.error("Erro o buscar o professor", error); //se der ruim tem que vir mensagem de erro
         });
 
-    },[])
+    },[]);
+    function excluirDisciplina(id) {
+        const confirmar = window.confirm('Tem certeza que deseja excluir esta disciplina?');
+        if (!confirmar) return;
+
+        const token = localStorage.getItem('access_token');
+
+        axios.delete(`http://127.0.0.1:8000/api/disciplina/${id}/`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(() => {
+            setDisciplinas(prev => prev.filter(d => d.id !== id));
+            alert("Disciplina excluída com sucesso!");
+        })
+        .catch(error => {
+            console.error("Erro ao excluir disciplina", error);
+            alert("Erro ao excluir disciplina.");
+        });
+    }
     return(
         <>
             <BarraPg/>
@@ -52,7 +70,7 @@ export function DisciplinasGestor(){
                 <div className={estilos.container}>
                     <h3 className={estilos.title}>DISCIPLINAS</h3>
                     <div className={estilos.topoAcoes}>
-                        <Link to="/inicial/adicionardisciplina" className={estilos.botaoAdicionar}>
+                        <Link to="/adicionardisciplina" className={estilos.botaoAdicionar}>
                             <img className={estilos.iconeAdd} src={more} alt='Adicionar disciplina' />
                         </Link>
                     </div>
@@ -77,8 +95,12 @@ export function DisciplinasGestor(){
                                         <td>{disciplina.carga_horaria}</td>
                                         <td>{professores[disciplina.professor]}</td>
                                         <td>
-                                            <img className={estilos.icone} src={edit} alt="Editar disciplina" />
-                                            <img className={estilos.icone} src={dell} alt="Excluir disciplina" />
+                                            <Link to="/editardisciplina" className={estilos.botaoAdicionar}>
+                                                <img className={estilos.icone} src={edit} alt="Editar disciplina" />
+                                            </Link>
+                                            <button className={estilos.botaoExcluir} onClick={() => excluirDisciplina(disciplina.id)} title="Excluir">
+                                                <img className={estilos.icone} src={dell} alt="Excluir disciplina" />
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
