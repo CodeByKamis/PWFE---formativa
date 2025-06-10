@@ -24,14 +24,18 @@ export function Menu(){
                             </Link>
                         </td>
                         <td className={estilos.menutd}>
-                            <img src={ambienteimg} alt="É um ícone que representa o ambiente" />
-                            <label>Ambientes</label>
+                            <Link to=''>
+                                <img src={ambienteimg} alt="É um ícone que representa o ambiente" />
+                                <label>Ambientes</label>
+                            </Link>
                         </td>
                     </tr>
                     <tr>
                         <td className={estilos.menutd}>
-                            <img src={professoresimg} alt="É um ícone que representa os professores" />
-                            <label>Professores</label>
+                            <Link to='/professores'>
+                                <img src={professoresimg} alt="É um ícone que representa os professores" />
+                                <label>Professores</label>
+                            </Link>
                         
                         </td>
                         <td className={estilos.menutd}>

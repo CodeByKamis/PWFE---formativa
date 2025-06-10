@@ -1,0 +1,54 @@
+import estilos from './Home.module.css';
+import { BarraNavegacao } from '../Componentes/BarraNavegacao';
+import { Footer } from '../Componentes/Footer';
+import { Link } from 'react-router-dom';
+import criancas_corredor from '../assets/criancas_corredor.png';
+import independentes from '../assets/independentes.png';
+import tecnologia from '../assets/tecnologia.png';
+import analitico from '../assets/analitico.png';
+import crianca_espaco from '../assets/crianca_espaco.png';
+import aula_criancas from '../assets/aula_criancas.png';
+export function FaleConosco(){
+    return(
+        <>
+            <BarraNavegacao/>
+            <main className={estilos.container}>
+                <section className={estilos.apresentacao}>
+
+                    <div className={estilos.apresentacao_text}>
+
+                        <div className={estilos.titulo}>
+                            <h2>AURORA KIDS É</h2>
+                        </div>
+
+                        <div className={estilos.texto}>
+                            <p className={estilos.primeiro_texto}>Na Educação Infantil do Aurora Kids Etapa, buscamos despertar o interesse dos alunos 
+                            pelo universo lúdico da aprendizagem, criando uma base sólida para o sucesso nos ciclos seguintes.</p>
+                            <p>Por meio da metodologia de ensino em espiral crescente, comprovada por 
+                            estudos neurocientíficos, proporcionamos uma experiência educativa completa, que abrange a alfabetização e o desenvolvimento integral das crianças, garantindo um começo de trajetória escolar cheio de conquistas.</p>
+                        </div>
+
+                    </div>
+                    <img className={estilos.apresentacao_imagem} src={criancas_corredor} alt="Crianças com roupa de ballet, judô e uniformizados andando no corredor e sorrindo" />
+                </section>
+
+
+                <section className={estilos.visita}>
+
+                    <div className={estilos.visita_div}>
+                        <h2>AGENDE UMA VISITA</h2>
+                        <p className={estilos.text_visita}>Visite a Aurora Kids mais perto de você!</p>
+                        <p className={estilos.text_visita_bold}>Garanta o prazer de aprender.</p>
+                        <Link to="">
+                            <button className={estilos.botao}>Agendar Uma Visita</button>
+                        </Link>
+                    </div>
+                    <img className={estilos.aula_img} src={aula_criancas} alt="Sala de aula com crianças tendo aula e de mão levantada" />
+
+                </section>
+            </main>
+            <Footer/>
+        
+        </>
+    )
+}

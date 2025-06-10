@@ -21,7 +21,7 @@ const schemaDisciplinas = z.object({
         {invalid_type_error: 'Informe uma carga horária'})
             .int("Digite um valor inteiro")
             .min(1, 'Informe o valor da carga horária')
-            .max(3, 'A carga horária é de até 260 horas'),
+            .max(260, 'A carga horária é de até 260 horas'),
 
     descricao: z.string()
         .min(1, 'Informe uma descricao')
@@ -106,18 +106,17 @@ export function DisciplinaCadastrar(){
                         <input
                             className={estilos.inputField}
                             {...register('curso')}
-                            placeholder="Desenvolvimento de Sistema"
+                            placeholder="Nome do curso"
                         />
                         {errors.curso && <p className={estilos.error}>{errors.curso.message}</p>}
                 
     
                         <label className ={estilos.nomeCampo}>Carga horária</label>
                         <input
-                        type="number"
-    
+                            type="number"
                             className={estilos.inputField}
-                            {...register('cargaHoraria', { valueAsNumber: true })}
-                            placeholder="80"
+                            {...register('carga_horaria', { valueAsNumber: true })}
+                            placeholder="75"
                         />
                         {errors.carga_horaria &&
                         <p className={estilos.error}>
@@ -129,7 +128,7 @@ export function DisciplinaCadastrar(){
                     <textarea
                         className={estilos.inputField}
                         {...register('descricao')}
-                        placeholder="Descreva o curso com até 2000 caracteres"
+                        placeholder="Descreva o curso com até 255 caracteres"
                         rows={5}
                         />
                         {errors.descricao && <p className={estilos.error}>{errors.descricao.message}</p>}

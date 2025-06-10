@@ -17,7 +17,7 @@ const schemaDisciplina = z.object({
         .min(1, 'Informe ao menos um caractere')
         .max(100, 'Informe até 255 caracteres'),
 
-    cargaHoraria: z.number({
+    carga_horaria: z.number({
         invalid_type_error: 'Informe a cargahorária'})
         .int("Deve ser um número inteiro")
         .min(1, "A carga horária mínima é 1 hora")
@@ -94,8 +94,8 @@ export function DisciplinaEditar() {
             navigate('/inicial/disciplina');
  
         } catch (error) {
-            console.error('Erro ao cadastrar disciplina', error);
-            alert("Erro ao cadastrar disciplina");
+            console.error('Erro ao Editar disciplina', error);
+            alert("Erro ao Editar disciplina");
         }
     }
  
@@ -120,7 +120,7 @@ export function DisciplinaEditar() {
                         <input
                             className={estilos.inputField}
                             {...register('curso')}
-                            placeholder="Desenvolvimento de Sistema"
+                            placeholder="Nome do curso"
                         />
                         {errors.curso && <p className={estilos.error}>{errors.curso.message}</p>}
                 
@@ -130,12 +130,12 @@ export function DisciplinaEditar() {
                         type="number"
     
                             className={estilos.inputField}
-                            {...register('cargaHoraria', { valueAsNumber: true })}
+                            {...register('carga_horaria', { valueAsNumber: true })}
                             placeholder="75"
                         />
-                        {errors.cargaHoraria &&
+                        {errors.carga_horaria &&
                         <p className={estilos.error}>
-                            {errors.cargaHoraria.message}
+                            {errors.carga_horaria.message}
                         </p>}
                 
     
@@ -163,7 +163,7 @@ export function DisciplinaEditar() {
     
                     <div className={estilos.icones}>
                         <button className={estilos.submitButton} type="submit">
-                            Cadastrar
+                            Editar
                         </button>
                     </div>
                 </form>
