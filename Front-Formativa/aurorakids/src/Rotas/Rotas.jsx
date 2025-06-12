@@ -10,20 +10,33 @@ import { ProfessoresCadastrar } from '../Paginas/ProfessoresCadastrar';
 import { Home } from '../Paginas/Home';
 import { FaleConosco } from '../Paginas/FaleConosco';
 import { ProfessoresEditar } from '../Paginas/ProfessoresEditar';
+import { AgendarVisita } from '../Paginas/AgendarVisita';
+import { GerenciarGestores } from '../Paginas/GerenciarGestores';
+import { GestorEditar } from '../Paginas/GestoresEditar';
+import { GestoresCadastrar } from '../Paginas/GestoresCadastrar';
 export function Rotas(){
     return(
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='login' element={<Login/>}/>
-                <Route path='/inicial' element={<Inicial/>}/>
+                <Route path='inicial' element={<Inicial/>}/>
+
                 <Route path='/inicial/profdisciplina' element={<DisciplinasProfessor/>}/>
+
                 <Route path='/inicial/disciplina' element={<DisciplinasGestor/>}/>
                 <Route path='adicionardisciplina' element={<DisciplinaCadastrar/>}/>
                 <Route path="/editardisciplina/:id" element={<DisciplinaEditar/>}/>
+
                 <Route path='professores' element={<ProfessoresGestor/>}/>
                 <Route path='professorescadastro' element={<ProfessoresCadastrar/>}/>
                 <Route path="/editarprofessor/:id" element={<ProfessoresEditar/>}/>
+
                 <Route path='faleconosco' element={<FaleConosco/>}/>
+                <Route path='agendarvisita' element={<AgendarVisita/>}/>
+
+                <Route path='gestores' element={<GerenciarGestores/>}/>
+                <Route path="/editargestores/:id" element={<GestorEditar/>}/>
+                <Route path='cadastrargestores' element={<GestoresCadastrar/>}/>
             </Routes>    
     )
     

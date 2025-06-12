@@ -12,7 +12,7 @@ export function BarraPg(){
                  
                 <img className={estilos.logo} src={logo} alt="É a logo do projeto" />  
 
-                <Link to="login">
+                <Link to="/login">
                     <p className={estilos.logout}>Logout</p>
                 </Link>
 

@@ -64,7 +64,7 @@ export function Home(){
                         <h2>AGENDE UMA VISITA</h2>
                         <p className={estilos.text_visita}>Visite a Aurora Kids mais perto de você!</p>
                         <p className={estilos.text_visita_bold}>Garanta o prazer de aprender.</p>
-                        <Link to="agendarvisita">
+                        <Link to="/agendarvisita">
                             <button className={estilos.botao}>Agendar Uma Visita</button>
                         </Link>
                     </div>

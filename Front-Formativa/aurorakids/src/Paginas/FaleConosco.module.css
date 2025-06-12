@@ -1,0 +1,147 @@
+.container{
+    flex-direction: column;
+}
+.apresentacao{
+    background-color: #93D9D8;
+    display: flex;
+    margin-top: 12px;
+    color: #112A46;
+    justify-content: center;
+}
+.apresentacao_text{
+    margin-right:62px ;
+    margin-bottom: 100px;
+}
+
+.titulo{
+    display: flex;
+    flex-direction: column;
+    width: 326px;
+    height: 72px;
+    justify-content: center;
+    margin-top: 94px;
+    margin-bottom: 10px;
+
+}
+.texto{
+    width: 400px;    
+}
+
+.primeiro_texto{
+    margin-bottom: 25px;
+}
+
+.apresentacao_imagem{
+    display: flex;
+    width: 510px;
+    height: 320.34px;
+    margin-bottom: 27px;
+    margin-top: 50px;
+}
+.titulo_diferencial{
+    display: flex;
+    margin-left: 592px;
+    margin-top: 37px;
+    margin-bottom: 30px;
+    color: #112A46;
+}
+
+.imagens_diferencial{
+    display: flex;
+    gap: 51px;
+    justify-content: center;
+    margin-bottom: 49px;
+}
+
+.diretrizes{
+    background-color: #93D9D8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 93px;
+    color: #112A46;
+}
+.titulo_img{
+    margin-top: 33px;
+}
+
+.titulo_diretrizes{
+    margin-bottom: 37px;
+}
+
+.titulo_diretrizes{
+    margin-top: 33px;
+}
+
+.img_espaco{
+    width: 449px;
+    height: auto;
+    margin-bottom: 57px;
+}
+.texto_diretrizes{
+    width: 397px;
+    height: 144px;
+    margin-left:46px;
+    font-size: 16px;
+    margin-top: 42px;
+    align-items: center;
+    justify-content: center;
+}
+.visita {
+    background-color: #93D9D8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 93px; /* Centraliza horizontalmente */
+    color: #112A46;
+    width: 754px;
+    height: 228px;
+    border-radius: 6px;
+    margin-top: 84px;
+}
+
+.visita_div{
+    gap: 100px;
+}
+.text_visita{
+    width: 328px;
+    margin-top: 13px;
+
+}
+.text_visita_bold{
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+.botao{
+    width: 191px;
+    height: 31.01px;
+    font-size: 16px;
+    border-radius: 6px;
+    background-color: #112A46;
+    color: #ffffff;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao:hover{
+    transform: scale(1.01);
+    box-shadow: 0 4px 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.aula_img{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.contato{
+    display: flex;
+    gap: 5px;
+    margin-top: 11px;
+}
+
+.contato_titulo{
+    font-weight: 600;
+}

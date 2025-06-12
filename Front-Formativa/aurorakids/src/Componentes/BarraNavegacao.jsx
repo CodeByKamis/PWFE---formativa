@@ -11,18 +11,17 @@ export function BarraNavegacao(){
                 <Link className={estilos.navgbarrinha} to="/">
                     <li>HOME</li>
                 </Link>
-                <Link className={estilos.navgbarrinha} to="faleconosco">
+                <Link className={estilos.navgbarrinha} to="/faleconosco">
                     <li>FALE CONOSCO</li>
                 </Link>
-                <Link className={estilos.navgbarrinha} to="login">
+                <Link className={estilos.navgbarrinha} to="/login">
                     <li>FAZER LOGIN</li>
                 </Link>
             </ul>
             <div className={estilos.nava}>
-                <a href="http://">
+                <Link to="/agendarvisita">
                     <button className={estilos.navbutton}>Agendar Uma Visita</button>
-                </a>
-
+                </Link>
                 
                 
             </div>
