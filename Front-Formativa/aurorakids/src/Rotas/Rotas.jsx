@@ -14,10 +14,11 @@ import { AgendarVisita } from '../Paginas/AgendarVisita';
 import { GerenciarGestores } from '../Paginas/GerenciarGestores';
 import { GestorEditar } from '../Paginas/GestoresEditar';
 import { GestoresCadastrar } from '../Paginas/GestoresCadastrar';
-import { ReservasGestor } from '../Paginas/ReservasGestor';
+// import { ReservasGestor } from '../Paginas/ReservasGestor';
 import { SalasGestores } from '../Paginas/SalasGestores';
 import { SalasEditar } from '../Paginas/SalasEditar';
 import { SalasCadastrar } from '../Paginas/SalasCadastrar';
+import { ReservaProfessor } from '../Paginas/ReservaProfessor';
 export function Rotas(){
     return(
             <Routes>
@@ -46,7 +47,9 @@ export function Rotas(){
                 <Route path="/editarsalas/:id" element={<SalasEditar/>}/>
                 <Route path='criarsalas' element={<SalasCadastrar/>}/>
 
-                <Route path='reservasgestor' element={<ReservasGestor/>}/>
+                <Route path='/inicial/profreserva' element={<ReservaProfessor/>}/>
+
+                {/* <Route path='reservasgestor' element={<ReservasGestor/>}/> */}
             </Routes>    
     )
     

@@ -10,6 +10,8 @@ export function Menu(){
     const tipo = localStorage.getItem('tipo');
     const linkDiscplina = tipo === 'P'? 'profdisciplina' : 'disciplina';
 
+    const linkReserva = tipo === 'P'? 'profreserva' : 'disciplina';
+
     return(
         <div className={estilos.container}>
             <h2 className={estilos.titulo}>SEJAM BEM-VINDOS AO SISTEMA AURORA KIDS</h2>
@@ -18,7 +20,7 @@ export function Menu(){
                     <img src={disciplinaimg} alt="Ícone de disciplinas" />
                     <label>Disciplinas</label>
                 </Link>
-                <Link to='/reservasgestor' className={estilos.menuItem}>
+                <Link to={linkReserva} className={estilos.menuItem}>
                     <img src={ambienteimg} alt="Ícone de Reservas" />
                     <label>Reservas</label>
                 </Link>
