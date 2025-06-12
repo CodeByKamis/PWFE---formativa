@@ -14,6 +14,10 @@ import { AgendarVisita } from '../Paginas/AgendarVisita';
 import { GerenciarGestores } from '../Paginas/GerenciarGestores';
 import { GestorEditar } from '../Paginas/GestoresEditar';
 import { GestoresCadastrar } from '../Paginas/GestoresCadastrar';
+import { ReservasGestor } from '../Paginas/ReservasGestor';
+import { SalasGestores } from '../Paginas/SalasGestores';
+import { SalasEditar } from '../Paginas/SalasEditar';
+import { SalasCadastrar } from '../Paginas/SalasCadastrar';
 export function Rotas(){
     return(
             <Routes>
@@ -37,6 +41,12 @@ export function Rotas(){
                 <Route path='gestores' element={<GerenciarGestores/>}/>
                 <Route path="/editargestores/:id" element={<GestorEditar/>}/>
                 <Route path='cadastrargestores' element={<GestoresCadastrar/>}/>
+
+                <Route path='salas' element={<SalasGestores/>}/>
+                <Route path="/editarsalas/:id" element={<SalasEditar/>}/>
+                <Route path='criarsalas' element={<SalasCadastrar/>}/>
+
+                <Route path='reservasgestor' element={<ReservasGestor/>}/>
             </Routes>    
     )
     

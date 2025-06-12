@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { BarraPg } from '../Componentes/BarraPg';
 import { Footer } from '../Componentes/Footer';
-import seta from '../assets/seta.svg';
 const schemaDisciplina = z.object({
     nome: z.string()
         .min(1, 'Informe ao menos um caractere')

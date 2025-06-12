@@ -22,7 +22,7 @@ export function Login(){
         .min (1, 'Informe o seu usuário corretamente')
         .max (255, 'Informe no máximo 255 caracteres'),
 
-    password: z.string()
+        password: z.string()
         .min(1, 'Informe a sua senha corretamente')
         .max(255, 'Informe no máximo 255 caracteres'),
         

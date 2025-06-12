@@ -198,3 +198,9 @@
   padding: 0;
   pointer-events: none; /* para evitar que o clique no ícone atrapalhe o botão */
 }
+
+
+/* em salas */
+.acao_cabecalho{
+    margin-left: 200px;
+}

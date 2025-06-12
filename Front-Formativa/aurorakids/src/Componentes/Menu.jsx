@@ -18,11 +18,11 @@ export function Menu(){
                     <img src={disciplinaimg} alt="Ícone de disciplinas" />
                     <label>Disciplinas</label>
                 </Link>
-                <Link to='' className={estilos.menuItem}>
-                    <img src={ambienteimg} alt="Ícone de ambientes" />
-                    <label>Ambientes</label>
+                <Link to='/reservasgestor' className={estilos.menuItem}>
+                    <img src={ambienteimg} alt="Ícone de Reservas" />
+                    <label>Reservas</label>
                 </Link>
-                <Link to='' className={estilos.menuItem}>
+                <Link to='/salas' className={estilos.menuItem}>
                     <img src={salas} alt="Ícone de salas" />
                     <label>Salas</label>
                 </Link>
