@@ -88,14 +88,14 @@ export function DisciplinaEditar() {
                 }
             );
  
-            console.log('Disciplina cadastrado com sucesso!', response.data);
-            alert('Disciplina cadastrado com sucesso!');
+            console.log('Disciplina editada com sucesso!', response.data);
+            alert('Disciplina editada com sucesso!');
             reset();
             navigate('/inicial/disciplina');
  
         } catch (error) {
-            console.error('Erro ao Editar disciplina', error);
-            alert("Erro ao Editar disciplina");
+            console.error('Erro ao editar disciplina', error);
+            alert("Erro ao editar disciplina");
         }
     }
  

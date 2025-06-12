@@ -50,8 +50,7 @@ export function ProfessoresCadastrar() {
           },
         }
       );
-
-      alert('Professor cadastrado com sucesso!');
+      alert('Professor(a) cadastrado com sucesso!');
       reset();
       console.log('Professor criado:', response.data);
     } catch (error) {
@@ -62,86 +61,79 @@ export function ProfessoresCadastrar() {
 
   return (
     <>
-        <BarraPg />
-        <div className={estilos.conteiner}>
-            <form className={estilos.loginForm} onSubmit={handleSubmit(enviarFormulario)}>
-                <h2 className={estilos.titulo}>Cadastro de Professor</h2>
+      <BarraPg />
+      <div className={estilos.conteiner}>
+        <form className={estilos.loginForm} onSubmit={handleSubmit(enviarFormulario)}>
+          <h2 className={estilos.titulo}>Cadastro de Professor</h2>
 
-                <label className={estilos.nomeCampo}>Primeiro Nome</label>
-                <input
-                    className={estilos.inputField}
-                    {...register('first_name')}
-                    placeholder="Primeiro nome"
-                />
-                {errors.first_name && <p className={estilos.error}>{errors.first_name.message}</p>}
+          <label className={estilos.nomeCampo}>Primeiro Nome</label>
+          <input
+              className={estilos.inputField}
+              {...register('first_name')}
+              placeholder="Primeiro nome"
+          />
+          {errors.first_name && <p className={estilos.error}>{errors.first_name.message}</p>}
 
-                <label className={estilos.nomeCampo}>Sobrenome</label>
-                <input
-                    className={estilos.inputField}
-                    {...register('last_name')}
-                    placeholder="Sobrenome"
-                />
-                {errors.last_name && <p className={estilos.error}>{errors.last_name.message}</p>}
+          <label className={estilos.nomeCampo}>Sobrenome</label>
+          <input
+              className={estilos.inputField}
+              {...register('last_name')}
+              placeholder="Sobrenome"/>
+          {errors.last_name && <p className={estilos.error}>{errors.last_name.message}</p>}
 
-                <label className={estilos.nomeCampo}>Nome de Usuário</label>
-                <input
-                    className={estilos.inputField}
-                    {...register('username')}
-                    placeholder="Username"
-                />
-                {errors.username && <p className={estilos.error}>{errors.username.message}</p>}
+          <label className={estilos.nomeCampo}>Nome de Usuário</label>
+          <input
+              className={estilos.inputField}
+              {...register('username')}
+              placeholder="Username"/>
+          {errors.username && <p className={estilos.error}>{errors.username.message}</p>}
 
-                <label className={estilos.nomeCampo}>Senha</label>
-                <input
-                    type="password"
-                    className={estilos.inputField}
-                    {...register('password')}
-                    placeholder="Senha"
-                />
-                {errors.password && <p className={estilos.error}>{errors.password.message}</p>}
+          <label className={estilos.nomeCampo}>Senha</label>
+          <input
+              type="password"
+              className={estilos.inputField}
+              {...register('password')}
+              placeholder="Senha"/>
+          {errors.password && <p className={estilos.error}>{errors.password.message}</p>}
 
-                <label className={estilos.nomeCampo}>NI</label>
-                <input
-                    type="number"
-                    className={estilos.inputField}
-                    {...register('ni', { valueAsNumber: true })}
-                    placeholder="Número único"
-                />
-                {errors.ni && <p className={estilos.error}>{errors.ni.message}</p>}
+          <label className={estilos.nomeCampo}>NI</label>
+          <input
+              type="number"
+              className={estilos.inputField}
+              {...register('ni', { valueAsNumber: true })}
+              placeholder="Número único"/>
+          {errors.ni && <p className={estilos.error}>{errors.ni.message}</p>}
 
-                <label className={estilos.nomeCampo}>Telefone</label>
-                <input
-                    type="tel"
-                    className={estilos.inputField}
-                    {...register('telefone')}
-                    placeholder="(XX) XXXXX-XXXX"
-                />
-                {errors.telefone && <p className={estilos.error}>{errors.telefone.message}</p>}
+          <label className={estilos.nomeCampo}>Telefone</label>
+          <input
+              type="tel"
+              className={estilos.inputField}
+              {...register('telefone')}
+              placeholder="(XX) XXXXX-XXXX"/>
+          {errors.telefone && <p className={estilos.error}>{errors.telefone.message}</p>}
 
-                <label className={estilos.nomeCampo}>Data de Nascimento</label>
-                <input
-                    type="date"
-                    className={estilos.inputField}
-                    {...register('data_nascimento')}
-                />
-                {errors.data_nascimento && <p className={estilos.error}>{errors.data_nascimento.message}</p>}
+          <label className={estilos.nomeCampo}>Data de Nascimento</label>
+          <input
+              type="date"
+              className={estilos.inputField}
+              {...register('data_nascimento')}/>
+          {errors.data_nascimento && <p className={estilos.error}>{errors.data_nascimento.message}</p>}
 
-                <label className={estilos.nomeCampo}>Data de Contratação</label>
-                <input
-                    type="date"
-                    className={estilos.inputField}
-                    {...register('data_contratacao')}
-                />
-                {errors.data_contratacao && <p className={estilos.error}>{errors.data_contratacao.message}</p>}
+          <label className={estilos.nomeCampo}>Data de Contratação</label>
+          <input
+              type="date"
+              className={estilos.inputField}
+              {...register('data_contratacao')}/>
+          {errors.data_contratacao && <p className={estilos.error}>{errors.data_contratacao.message}</p>}
 
-                <div className={estilos.icones}>
-                    <button className={estilos.submitButton} type="submit">
-                    Cadastrar Professor
-                    </button>
-                </div>
-            </form>
-        </div>
-        <Footer/>
+          <div className={estilos.icones}>
+              <button className={estilos.submitButton} type="submit">
+              Cadastrar Professor
+              </button>
+          </div>
+        </form>
+      </div>
+      <Footer/>
     </>
   );
 }

@@ -95,7 +95,7 @@ export function DisciplinasGestor(){
                                         <td>{disciplina.carga_horaria}</td>
                                         <td>{professores[disciplina.professor]}</td>
                                         <td>
-                                            <Link to="/editardisciplina" className={estilos.botaoAdicionar}>
+                                            <Link to={`/editardisciplina/${disciplina.id}`} className={estilos.botaoAdicionar}>
                                                 <img className={estilos.icone} src={edit} alt="Editar disciplina" />
                                             </Link>
                                             <button className={estilos.botaoExcluir} onClick={() => excluirDisciplina(disciplina.id)} title="Excluir">

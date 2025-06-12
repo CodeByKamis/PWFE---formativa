@@ -9,6 +9,7 @@ import { ProfessoresGestor } from '../Paginas/ProfessoresGestor';
 import { ProfessoresCadastrar } from '../Paginas/ProfessoresCadastrar';
 import { Home } from '../Paginas/Home';
 import { FaleConosco } from '../Paginas/FaleConosco';
+import { ProfessoresEditar } from '../Paginas/ProfessoresEditar';
 export function Rotas(){
     return(
             <Routes>
@@ -18,9 +19,10 @@ export function Rotas(){
                 <Route path='/inicial/profdisciplina' element={<DisciplinasProfessor/>}/>
                 <Route path='/inicial/disciplina' element={<DisciplinasGestor/>}/>
                 <Route path='adicionardisciplina' element={<DisciplinaCadastrar/>}/>
-                <Route path='editardisciplina' element={<DisciplinaEditar/>}/>
+                <Route path="/editardisciplina/:id" element={<DisciplinaEditar/>}/>
                 <Route path='professores' element={<ProfessoresGestor/>}/>
                 <Route path='professorescadastro' element={<ProfessoresCadastrar/>}/>
+                <Route path="/editarprofessor/:id" element={<ProfessoresEditar/>}/>
                 <Route path='faleconosco' element={<FaleConosco/>}/>
             </Routes>    
     )
