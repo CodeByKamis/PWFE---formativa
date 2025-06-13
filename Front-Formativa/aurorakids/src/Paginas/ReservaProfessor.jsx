@@ -1,57 +1,70 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import estilos from './DisciplinasGestor.module.css';
+import estilos from './DisciplinasProfessor.module.css';
 import { BarraPg } from '../Componentes/BarraPg';
 import { Footer } from '../Componentes/Footer';
 
 export function ReservaProfessor() {
   const [reservas, setReservas] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [erro, setErro] = useState(null);
+  const [salas, setSalas] = useState({});
+  const [disciplinas, setDisciplinas] = useState({});
 
   useEffect(() => {
-    buscarReservas();
-  }, []);
-
-  function buscarReservas() {
     const token = localStorage.getItem('access_token');
-    console.log('Token:', token);
-    setLoading(true);
-    setErro(null);
 
-    axios
-      .get('http://127.0.0.1:8000/api/professor/reservas/', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        console.log('Resposta da API:', response.data);
-        setReservas(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Erro ao buscar reservas:', error.response || error.message || error);
-        setErro('Erro ao carregar as reservas.');
-        setLoading(false);
+    // Buscar salas e montar mapa id->nome
+    axios.get('http://127.0.0.1:8000/api/salas/', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(res => {
+      const salasNome = {};
+      res.data.forEach(sala => {
+        salasNome[sala.id] = sala.nome;
       });
-  }
+      setSalas(salasNome);
+    })
+    .catch(err => console.error('Erro ao buscar salas', err));
+
+    // Buscar disciplinas e montar mapa id->nome
+    axios.get('http://127.0.0.1:8000/api/disciplinas/', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(res => {
+      const disciplinasMap = {};
+      res.data.forEach(disc => {
+        disciplinasMap[disc.id] = disc.nome;
+      });
+      setDisciplinas(disciplinasMap);
+    })
+    .catch(err => console.error('Erro ao buscar disciplinas', err));
+
+    // Buscar reservas
+    axios.get('http://127.0.0.1:8000/api/professor/reservas/', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(res => {
+      setReservas(res.data);
+    })
+    .catch(err => console.error('Erro ao buscar reservas', err));
+  }, []);
 
   return (
     <>
       <BarraPg />
-      <main className={estilos.containerM}>
-        <div className={estilos.container}>
-          <h3 className={estilos.title}>Minhas Reservas</h3>
-
-          {loading && <p>Carregando reservas...</p>}
-          {erro && <p style={{ color: 'red' }}>{erro}</p>}
-
-          {!loading && !erro && (
-            <div>
-              <pre>{JSON.stringify(reservas, null, 2)}</pre>
-            </div>
-          )}
+      <div className={estilos.containerCard}>
+        <h2 className={estilos.tituloCard}>Minhas Reservas</h2>∆
+        <div className={estilos.listaCard}>
+        {reservas.map(reserva => (
+        <div key={reserva.id} className={estilos.card}>
+          <h3 className={estilos.nome}>Sala: {salas[reserva.sala_reservada] || 'Carregando...'}</h3>
+          <p><strong>Disciplina: </strong>{disciplinas[reserva.disciplina] || 'Carregando...'}</p>
+          <p><strong>Período: </strong>{reserva.periodo}</p>
+          <p><strong>Data Início: </strong>{reserva.data_inicio}</p>
+          <p><strong>Data Término: </strong>{reserva.data_termino}</p>
         </div>
-      </main>
+      ))}
+              </div>
+      </div>
       <Footer />
     </>
   );

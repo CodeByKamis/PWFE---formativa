@@ -10,7 +10,7 @@ export function Menu(){
     const tipo = localStorage.getItem('tipo');
     const linkDiscplina = tipo === 'P'? 'profdisciplina' : 'disciplina';
 
-    const linkReserva = tipo === 'P'? 'profreserva' : 'disciplina';
+    const linkReserva = tipo === 'P'? 'profreserva' : '/reservas';
 
     return(
         <div className={estilos.container}>
