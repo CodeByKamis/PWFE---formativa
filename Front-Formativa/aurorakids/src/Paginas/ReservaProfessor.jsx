@@ -12,8 +12,8 @@ export function ReservaProfessor() {
   useEffect(() => {
     const token = localStorage.getItem('access_token');
 
-    // Buscar salas e montar mapa id->nome
-    axios.get('http://127.0.0.1:8000/api/salas/', {
+    // ✅ Buscar salas (corrigido: "sala/")
+    axios.get('http://127.0.0.1:8000/api/sala/', {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => {
@@ -25,8 +25,8 @@ export function ReservaProfessor() {
     })
     .catch(err => console.error('Erro ao buscar salas', err));
 
-    // Buscar disciplinas e montar mapa id->nome
-    axios.get('http://127.0.0.1:8000/api/disciplinas/', {
+    // ✅ Buscar disciplinas (corrigido: "disciplina/")
+    axios.get('http://127.0.0.1:8000/api/disciplina/', {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => {
@@ -38,7 +38,7 @@ export function ReservaProfessor() {
     })
     .catch(err => console.error('Erro ao buscar disciplinas', err));
 
-    // Buscar reservas
+    // ✅ Buscar reservas do professor
     axios.get('http://127.0.0.1:8000/api/professor/reservas/', {
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -52,18 +52,18 @@ export function ReservaProfessor() {
     <>
       <BarraPg />
       <div className={estilos.containerCard}>
-        <h2 className={estilos.tituloCard}>Minhas Reservas</h2>∆
+        <h2 className={estilos.tituloCard}>Minhas Reservas</h2>
         <div className={estilos.listaCard}>
-        {reservas.map(reserva => (
-        <div key={reserva.id} className={estilos.card}>
-          <h3 className={estilos.nome}>Sala: {salas[reserva.sala_reservada] || 'Carregando...'}</h3>
-          <p><strong>Disciplina: </strong>{disciplinas[reserva.disciplina] || 'Carregando...'}</p>
-          <p><strong>Período: </strong>{reserva.periodo}</p>
-          <p><strong>Data Início: </strong>{reserva.data_inicio}</p>
-          <p><strong>Data Término: </strong>{reserva.data_termino}</p>
+          {reservas.map(reserva => (
+            <div key={reserva.id} className={estilos.card}>
+              <h3 className={estilos.nome}>Sala: {reserva.sala_reservada?.nome || 'Carregando...'}</h3>
+              <p><strong>Disciplina: </strong>{disciplinas[reserva.disciplina] || 'Carregando...'}</p>
+              <p><strong>Período: </strong>{reserva.periodo}</p>
+              <p><strong>Data Início: </strong>{reserva.data_inicio}</p>
+              <p><strong>Data Término: </strong>{reserva.data_termino}</p>
+            </div>
+          ))}
         </div>
-      ))}
-              </div>
       </div>
       <Footer />
     </>
