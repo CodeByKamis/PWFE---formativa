@@ -93,7 +93,7 @@ export function ReservaGestor() {
           <h3 className={estilos.title}>Reservas de Sala</h3>
 
           <div className={estilos.topoAcoes}>
-            <Link to="/adicionarreserva" className={estilos.botaoAdicionar}>
+            <Link to="/cadastrarreserva" className={estilos.botaoAdicionar}>
               <img className={estilos.iconeAdd} src={more} alt="Adicionar reserva" />
             </Link>
           </div>

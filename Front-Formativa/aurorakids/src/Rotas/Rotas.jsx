@@ -20,6 +20,7 @@ import { SalasEditar } from '../Paginas/SalasEditar';
 import { SalasCadastrar } from '../Paginas/SalasCadastrar';
 import { ReservaProfessor } from '../Paginas/ReservaProfessor';
 import { ReservaGestor } from '../Paginas/ReservaGestor';
+import { ReservaCadastrar } from '../Paginas/ReservaCadastrar';
 
 export function Rotas(){
     return(
@@ -51,6 +52,7 @@ export function Rotas(){
 
                 <Route path='/inicial/profreserva' element={<ReservaProfessor/>}/>
                 <Route path='reservas' element={<ReservaGestor/>}/>
+                <Route path='cadastrarreserva' element={<ReservaCadastrar/>}/>
 
                 {/* <Route path='reservasgestor' element={<ReservasGestor/>}/> */}
             </Routes>    
