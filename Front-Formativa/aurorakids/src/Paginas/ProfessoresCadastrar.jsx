@@ -86,7 +86,8 @@ export function ProfessoresCadastrar() {
 
   return (
     <>
-      <BarraPg />
+
+      <BarraPg/>
       <div className={estilos.conteiner}>
         {/* formulario para cadastrar um professor */}
         <form className={estilos.loginForm} onSubmit={handleSubmit(enviarFormulario)}>
@@ -98,21 +99,30 @@ export function ProfessoresCadastrar() {
               {...register('first_name')}
               placeholder="Primeiro nome"
           />
-          {errors.first_name && <p className={estilos.error}>{errors.first_name.message}</p>}
+          {errors.first_name && 
+          <p className={estilos.error}>
+            {errors.first_name.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Sobrenome</label>
           <input
               className={estilos.inputField}
               {...register('last_name')}
               placeholder="Sobrenome"/>
-          {errors.last_name && <p className={estilos.error}>{errors.last_name.message}</p>}
+          {errors.last_name && 
+          <p className={estilos.error}>
+            {errors.last_name.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Nome de Usuário</label>
           <input
               className={estilos.inputField}
               {...register('username')}
               placeholder="Username"/>
-          {errors.username && <p className={estilos.error}>{errors.username.message}</p>}
+          {errors.username && 
+          <p className={estilos.error}>
+            {errors.username.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Senha</label>
           <input
@@ -120,7 +130,10 @@ export function ProfessoresCadastrar() {
               className={estilos.inputField}
               {...register('password')}
               placeholder="Senha"/>
-          {errors.password && <p className={estilos.error}>{errors.password.message}</p>}
+          {errors.password && 
+          <p className={estilos.error}>
+            {errors.password.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>NI</label>
           <input
@@ -128,7 +141,10 @@ export function ProfessoresCadastrar() {
               className={estilos.inputField}
               {...register('ni', { valueAsNumber: true })}
               placeholder="Número único"/>
-          {errors.ni && <p className={estilos.error}>{errors.ni.message}</p>}
+          {errors.ni && 
+          <p className={estilos.error}>
+            {errors.ni.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Telefone</label>
           <input
@@ -136,21 +152,30 @@ export function ProfessoresCadastrar() {
               className={estilos.inputField}
               {...register('telefone')}
               placeholder="(XX) XXXXX-XXXX"/>
-          {errors.telefone && <p className={estilos.error}>{errors.telefone.message}</p>}
+          {errors.telefone && 
+          <p className={estilos.error}>
+            {errors.telefone.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Data de Nascimento</label>
           <input
               type="date"
               className={estilos.inputField}
               {...register('data_nascimento')}/>
-          {errors.data_nascimento && <p className={estilos.error}>{errors.data_nascimento.message}</p>}
+          {errors.data_nascimento && 
+          <p className={estilos.error}>
+            {errors.data_nascimento.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Data de Contratação</label>
           <input
               type="date"
               className={estilos.inputField}
               {...register('data_contratacao')}/>
-          {errors.data_contratacao && <p className={estilos.error}>{errors.data_contratacao.message}</p>}
+          {errors.data_contratacao && 
+          <p className={estilos.error}>
+            {errors.data_contratacao.message}
+          </p>}
 
           <div className={estilos.icones}>
               <button className={estilos.submitButton} type="submit">
@@ -160,6 +185,7 @@ export function ProfessoresCadastrar() {
         </form>
       </div>
       <Footer/>
+
     </>
   );
 }

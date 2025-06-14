@@ -41,7 +41,6 @@ export function GerenciarGestores() {
       //caso dê errado
       .catch((error) => { 
         console.error('Erro ao buscar gestores:', error);
-        setErro('Erro ao carregar os gestores.');
         setLoading(false);
       });
   }
@@ -83,9 +82,7 @@ export function GerenciarGestores() {
               <img className={estilos.iconeAdd} src={more} alt="Adicionar gestor" />
             </Link>
           </div>
-          {/* mais para tratativa de erro caso seja necessário por token expirado etc */}
-          {loading && <p>Carregando gestores...</p>}
-          {erro && <p style={{ color: 'red' }}>{erro}</p>}
+        
 
           {!loading && !erro && (
             <table className={estilos.tabeladados}>
@@ -115,15 +112,13 @@ export function GerenciarGestores() {
                       <Link
                         to={`/editargestores/${gest.id}`}
                         title="Editar gestor"
-                        className={estilos.botaoAdicionar}
-                      >
+                        className={estilos.botaoAdicionar}>
                         <img className={estilos.icone} src={edit} alt="Editar" />
                       </Link>
                       <button
                         className={estilos.botaoExcluir}
                         onClick={() => excluirGestor(gest.id)}
-                        title="Excluir gestor"
-                      >
+                        title="Excluir gestor">
                         <img className={estilos.icone} src={dell} alt="Excluir" />
                       </button>
                     </td>
@@ -134,7 +129,7 @@ export function GerenciarGestores() {
           )}
         </div>
       </main>
-      <Footer />
+      <Footer/>
     </>
   );
 }

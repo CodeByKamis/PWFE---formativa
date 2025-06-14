@@ -40,7 +40,6 @@ export function ProfessoresGestor() {
       .catch((error) => {
         // se der errado: 
         console.error('Erro ao buscar professores:', error);
-        setErro('Erro ao carregar os professores.');
         setLoading(false);
       });
   }
@@ -71,8 +70,10 @@ export function ProfessoresGestor() {
   }
 //retornado na tela do usuario
   return (
+
     <>
-      <BarraPg />
+
+      <BarraPg/>
       <main className={estilos.containerM}>
         <div className={estilos.container}>
           <h3 className={estilos.title}>Professores Cadastrados</h3>
@@ -81,10 +82,7 @@ export function ProfessoresGestor() {
             <Link to="/professorescadastro" className={estilos.botaoAdicionar}>
               <img className={estilos.iconeAdd} src={more} alt="Adicionar professor" />
             </Link>
-          </div>
-
-          {loading && <p>Carregando professores...</p>}
-          {erro && <p style={{ color: 'red' }}>{erro}</p>}
+          </div>          
 
           {!loading && !erro && (
             <table className={estilos.tabeladados}>
@@ -132,6 +130,8 @@ export function ProfessoresGestor() {
         </div>
       </main>
       <Footer />
+
+      
     </>
   );
 }

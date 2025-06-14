@@ -27,8 +27,7 @@ export function DisciplinasProfessor(){
         .catch(error =>{
             console.error("Erro", error);
         });
-
-
+        
         
     },[]);
 

@@ -87,9 +87,11 @@ export function Login(){
                     <input className={estilos.inputField}
                     // os 3 pontos serve para quebrar uma array ou algo assim - tenho um objeto e ele tem nome, duracao, ano, genero, o ... quebra isso em nome: tal; ano: tal;
                         {...register('username')}
-                        placeholder='Escreva aqui'
-                    />
-                    {errors.username && <p className={estilos.error}>{errors.username.message}</p>}
+                        placeholder='Escreva aqui'/>
+                    {errors.username && 
+                    <p className={estilos.error}>
+                        {errors.username.message}
+                    </p>}
 
                     {/* && faz concatenização react com o uso de tags*/}
 
@@ -99,9 +101,11 @@ export function Login(){
                     <input className={estilos.inputField}
                         {...register('password')}
                         placeholder='Senha'
-                        type="password"//serve para aparecer as bolinhas na senha
-                    />
-                    {errors.password && <p className={estilos.error}>{errors.password.message}</p>}
+                        type="password"/>
+                    {errors.password && 
+                    <p className={estilos.error}>
+                        {errors.password.message}
+                    </p>}
 
                     <button type='submit' className={estilos.submitButton}>Fazer Login</button>
                 </form>

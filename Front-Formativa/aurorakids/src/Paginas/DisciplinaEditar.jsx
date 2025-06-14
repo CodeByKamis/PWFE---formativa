@@ -117,7 +117,10 @@ export function DisciplinaEditar() {
                             {...register('nome')}
                             placeholder="Materia"
                         />
-                        {errors.nome && <p className={estilos.error}>{errors.nome.message}</p>}
+                        {errors.nome && 
+                        <p className={estilos.error}>
+                            {errors.nome.message}
+                        </p>}
                 
     
                         <label className ={estilos.nomeCampo}>Nome do curso</label>
@@ -126,7 +129,10 @@ export function DisciplinaEditar() {
                             {...register('curso')}
                             placeholder="Nome do curso"
                         />
-                        {errors.curso && <p className={estilos.error}>{errors.curso.message}</p>}
+                        {errors.curso &&
+                        <p className={estilos.error}>
+                            {errors.curso.message}
+                        </p>}
                 
     
                         <label className ={estilos.nomeCampo}>Carga horária</label>
@@ -150,7 +156,10 @@ export function DisciplinaEditar() {
                         placeholder="Descreva o curso com até 2000 caracteres"
                         rows={5}
                         />
-                        {errors.descricao && <p className={estilos.error}>{errors.descricao.message}</p>}
+                        {errors.descricao && 
+                        <p className={estilos.error}>
+                            {errors.descricao.message}
+                        </p>}
                 
                         <label className ={estilos.nomeCampo}>Professor</label>
                         <select className={estilos.inputField}
@@ -162,7 +171,10 @@ export function DisciplinaEditar() {
                                 </option>
                             ))}
                         </select>
-                        {errors.professor && <p className={estilos.error}>{errors.professor.message}</p>}
+                        {errors.professor&& 
+                        <p className={estilos.error}>
+                            {errors.professor.message}
+                        </p>}
                 
     
                     <div className={estilos.icones}>

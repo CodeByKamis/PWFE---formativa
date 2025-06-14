@@ -64,15 +64,28 @@ export function ReservaProfessor() {
           {reservas.map(reserva => (
             <div key={reserva.id} className={estilos.card}>
               <h3 className={estilos.nome}>Sala: {reserva.sala_reservada_detail?.nome}</h3>
-              <p><strong>Disciplina: </strong>{disciplinas[reserva.disciplina]}</p>
-              <p><strong>Período: </strong>{reserva.periodo}</p>
-              <p><strong>Data Início: </strong>{reserva.data_inicio}</p>
-              <p><strong>Data Término: </strong>{reserva.data_termino}</p>
+              <p> 
+                <strong>Disciplina: </strong>{disciplinas[reserva.disciplina]}
+              </p>
+              
+
+              <p> 
+                <strong>Período: </strong>{reserva.periodo}
+              </p>
+              <p> 
+                <strong>Data Início: </strong>{reserva.data_inicio}
+              </p>
+
+
+              <p> 
+                <strong>Data Término: </strong>{reserva.data_termino}
+              </p>
+
             </div>
           ))}
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </>
   );
 }

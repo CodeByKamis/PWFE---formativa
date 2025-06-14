@@ -81,7 +81,7 @@ export function SalasEditar() {
 //é o que é exibido na tela do usuario
   return (
     <>
-      <BarraPg />
+      <BarraPg/>
 
       <div className={estilos.conteiner}>
         <form className={estilos.loginForm} onSubmit={handleSubmit(enviarDadosFormulario)}>
@@ -91,18 +91,22 @@ export function SalasEditar() {
           <input
             className={estilos.inputField}
             {...register('nome')}
-            placeholder="Nome da sala"
-          />
-          {errors.nome && <p className={estilos.error}>{errors.nome.message}</p>}
+            placeholder="Nome da sala"/>
+          {errors.nome && 
+          <p className={estilos.error}>
+            {errors.nome.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Capacidade</label>
           <input
             type="number"
             className={estilos.inputField}
             {...register('capacidade', { valueAsNumber: true })}
-            placeholder="Capacidade"
-          />
-          {errors.capacidade && <p className={estilos.error}>{errors.capacidade.message}</p>}
+            placeholder="Capacidade"/>
+          {errors.capacidade && 
+          <p className={estilos.error}>
+            {errors.capacidade.message}
+          </p>}
 
           <div className={estilos.icones}>
             <button className={estilos.submitButton} type="submit">
@@ -111,8 +115,8 @@ export function SalasEditar() {
           </div>
         </form>
       </div>
-
-      <Footer />
+      <Footer/>
+      
     </>
   );
 }

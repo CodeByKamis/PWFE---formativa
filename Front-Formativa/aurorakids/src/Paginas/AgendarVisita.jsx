@@ -26,31 +26,27 @@ export function AgendarVisita() {
           <input
             className={estilos.inputField}
             placeholder="Escreva aqui"
-            name="nome"
-          />
+            name="nome"/>
 
           <label className={estilos.nomeCampo}>Número de Telefone</label>
           <input
             type="tel"
             className={estilos.inputField}
             placeholder="(XX) XXXXX-XXXX"
-            name="telefone"
-          />
+            name="telefone"/>
 
           <label className={estilos.nomeCampo}>Email</label>
           <input
             type="email"
             className={estilos.inputField}
             placeholder="Escreva aqui"
-            name="email"
-          />
+            name="email"/>
 
-          <label className={estilos.nomeCampo}>Data de Visita</label>
+          <label className={estilos.nomeCampo}>Data da Visita</label>
           <input
             type="date"
             className={estilos.inputField}
-            name="data"
-          />
+            name="data"/>
 
           <div className={estilos.icones}>
               <button className={estilos.submitButton} type="submit">

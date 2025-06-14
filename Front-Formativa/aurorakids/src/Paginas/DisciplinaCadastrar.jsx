@@ -107,7 +107,10 @@ export function DisciplinaCadastrar(){
                                 {...register('nome')} //é onde vai ficar registrado
                                 placeholder="Materia" //é aquilo que fica mostrando para o usuario ver como que faz
                             />
-                            {errors.nome && <p className={estilos.error}>{errors.nome.message}</p>}
+                            {errors.nome && 
+                            <p className={estilos.error}>
+                                {errors.nome.message}
+                            </p>}
                     
         
                             <label className ={estilos.nomeCampo}>Nome do curso</label>
@@ -116,7 +119,10 @@ export function DisciplinaCadastrar(){
                                 {...register('curso')}
                                 placeholder="Nome do curso"
                             />
-                            {errors.curso && <p className={estilos.error}>{errors.curso.message}</p>}
+                            {errors.curso && 
+                            <p className={estilos.error}>
+                                {errors.curso.message}
+                            </p>}
                     
         
                             <label className ={estilos.nomeCampo}>Carga horária</label>
@@ -126,6 +132,7 @@ export function DisciplinaCadastrar(){
                                 {...register('carga_horaria', { valueAsNumber: true })}
                                 placeholder="75"
                             />
+
                             {errors.carga_horaria &&
                             <p className={estilos.error}>
                                 {errors.carga_horaria.message}
@@ -139,7 +146,10 @@ export function DisciplinaCadastrar(){
                             placeholder="Descreva o curso com até 255 caracteres"
                             rows={5}
                             />
-                            {errors.descricao && <p className={estilos.error}>{errors.descricao.message}</p>}
+                            {errors.descricao && 
+                            <p className={estilos.error}>
+                                {errors.descricao.message}
+                            </p>}
                     
                             <label className ={estilos.nomeCampo}>Professor</label>
                             <select className={estilos.inputField}
@@ -151,7 +161,10 @@ export function DisciplinaCadastrar(){
                                     </option>
                                 ))}
                             </select>
-                            {errors.professor && <p className={estilos.error}>{errors.professor.message}</p>}
+                            {errors.professor && 
+                            <p className={estilos.error}>
+                                {errors.professor.message}
+                            </p>}
                     
         
                         <div className={estilos.icones}>

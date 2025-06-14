@@ -74,6 +74,7 @@ export function Home(){
 
                 </section>
             </main>
+            
             <Footer/>
         
         </>

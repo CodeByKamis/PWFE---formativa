@@ -27,7 +27,6 @@ export function SalasGestores() {
     //se der errado
     .catch(error => {
       console.error("Erro ao buscar salas", error);
-      alert("Erro ao carregar salas. Verifique se você tem permissão.");
     });
   }, []);
 //funcao para excluir a sala
@@ -53,8 +52,10 @@ export function SalasGestores() {
   }
 //retornando na tela para o usuario ver
   return (
+
     <>
-      <BarraPg />
+      <BarraPg/>
+
       <main className={estilos.containerM}>
         <div className={estilos.container}>
           <h3 className={estilos.title}>SALAS</h3>
@@ -92,7 +93,12 @@ export function SalasGestores() {
           </div>
         </div>
       </main>
+
+
       <Footer />
     </>
+
+
+
   );
 }

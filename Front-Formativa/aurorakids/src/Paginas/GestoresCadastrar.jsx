@@ -94,8 +94,7 @@ export function GestoresCadastrar() {
           <input
               className={estilos.inputField}
               {...register('first_name')}
-              placeholder="Primeiro nome"
-          />
+              placeholder="Primeiro nome"/>
           {errors.first_name && <p className={estilos.error}>{errors.first_name.message}</p>}
 
           <label className={estilos.nomeCampo}>Sobrenome</label>

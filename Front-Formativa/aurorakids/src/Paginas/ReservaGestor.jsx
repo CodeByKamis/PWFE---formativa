@@ -76,7 +76,9 @@ export function ReservaGestor() {
   }
 //retornando para a tela do usuario
   return (
+    
     <>
+
       <BarraPg />
       <main className={estilos.containerM}>
         <div className={estilos.container}>
@@ -113,17 +115,14 @@ export function ReservaGestor() {
                   <tr key={reserva.id}>
                     <td>{reserva.id}</td>
                     <td>{professores[reserva.professor]}</td>
-                    {/* Aqui puxando o nome da sala direto do objeto reserva.sala_reservada.nome */}
                     <td>{reserva.sala_reservada_detail?.nome}</td>
                     <td>{reserva.periodo}</td>
                     <td>{reserva.data_inicio}</td>
                     <td>{reserva.data_termino}</td>
                     <td>
-                      <Link
-                        to={`/editarreserva/${reserva.id}`}
+                      <Link to={`/editarreserva/${reserva.id}`}
                         className={estilos.botaoAdicionar}
-                        title="Editar reserva"
-                      >
+                        title="Editar reserva">
                         <img className={estilos.icone} src={edit} alt="Editar" />
                       </Link>
                       <button className={estilos.botaoExcluir} onClick={() => excluirReserva(reserva.id)} title="Excluir">
@@ -137,6 +136,7 @@ export function ReservaGestor() {
           )}
         </div>
       </main>
+
       <Footer />
     </>
   );

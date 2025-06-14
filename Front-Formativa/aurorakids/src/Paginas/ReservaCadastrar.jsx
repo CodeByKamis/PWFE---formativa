@@ -116,7 +116,9 @@ export function ReservaCadastrar() {
 //retornando na tela do usuario
   return (
     <>
-      <BarraPg />
+
+      <BarraPg/>
+
       <div className={estilos.conteiner}>
         <form className={estilos.loginForm} onSubmit={handleSubmit(enviarFormulario)}>
           <h2 className={estilos.titulo}>Cadastro de Reserva</h2>
@@ -130,7 +132,10 @@ export function ReservaCadastrar() {
               </option>
             ))}
           </select>
-          {errors.professor && <p className={estilos.error}>{errors.professor.message}</p>}
+          {errors.professor && 
+          <p className={estilos.error}>
+            {errors.professor.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Sala</label>
           <select className={estilos.inputField} {...register('sala_reservada', { valueAsNumber: true })}>
@@ -141,7 +146,10 @@ export function ReservaCadastrar() {
               </option>
             ))}
           </select>
-          {errors.sala_reservada && <p className={estilos.error}>{errors.sala_reservada.message}</p>}
+          {errors.sala_reservada && 
+          <p className={estilos.error}>
+            {errors.sala_reservada.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Disciplina</label>
           <select className={estilos.inputField} {...register('disciplina', { valueAsNumber: true })}>
@@ -152,7 +160,10 @@ export function ReservaCadastrar() {
               </option>
             ))}
           </select>
-          {errors.disciplina && <p className={estilos.error}>{errors.disciplina.message}</p>}
+          {errors.disciplina && 
+          <p className={estilos.error}>
+            {errors.disciplina.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Período</label>
           <select className={estilos.inputField} {...register('periodo')}>
@@ -161,15 +172,24 @@ export function ReservaCadastrar() {
             <option value="T">Tarde</option>
             <option value="Noite">Noite</option>
           </select>
-          {errors.periodo && <p className={estilos.error}>{errors.periodo.message}</p>}
+          {errors.periodo && 
+          <p className={estilos.error}>
+            {errors.periodo.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Data Início</label>
           <input type="date" className={estilos.inputField} {...register('data_inicio')} />
-          {errors.data_inicio && <p className={estilos.error}>{errors.data_inicio.message}</p>}
+          {errors.data_inicio && 
+          <p className={estilos.error}>
+            {errors.data_inicio.message}
+          </p>}
 
           <label className={estilos.nomeCampo}>Data Término</label>
           <input type="date" className={estilos.inputField} {...register('data_termino')} />
-          {errors.data_termino && <p className={estilos.error}>{errors.data_termino.message}</p>}
+          {errors.data_termino && 
+          <p className={estilos.error}>
+            {errors.data_termino.message}
+          </p>}
 
           <div className={estilos.icones}>
             <button className={estilos.submitButton} type="submit">
@@ -178,7 +198,11 @@ export function ReservaCadastrar() {
           </div>
         </form>
       </div>
-      <Footer />
+
+
+      <Footer/>
+
+      
     </>
   );
 }
