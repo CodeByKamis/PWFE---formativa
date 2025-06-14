@@ -124,7 +124,7 @@ export function ReservaGestor() {
                     <td>{reserva.id}</td>
                     <td>{professores[reserva.professor] || '—'}</td>
                     {/* Aqui puxando o nome da sala direto do objeto reserva.sala_reservada.nome */}
-                    <td>{reserva.sala_reservada?.nome || '—'}</td>
+                    <td>{reserva.sala_reservada_detail?.nome || '—'}</td>
                     <td>{reserva.periodo}</td>
                     <td>{reserva.data_inicio}</td>
                     <td>{reserva.data_termino}</td>

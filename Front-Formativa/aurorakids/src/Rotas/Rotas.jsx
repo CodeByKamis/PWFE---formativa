@@ -21,6 +21,7 @@ import { SalasCadastrar } from '../Paginas/SalasCadastrar';
 import { ReservaProfessor } from '../Paginas/ReservaProfessor';
 import { ReservaGestor } from '../Paginas/ReservaGestor';
 import { ReservaCadastrar } from '../Paginas/ReservaCadastrar';
+import { ReservaEditar } from '../Paginas/ReservaEditar';
 
 export function Rotas(){
     return(
@@ -28,7 +29,6 @@ export function Rotas(){
                 <Route path='/' element={<Home/>}/>
                 <Route path='login' element={<Login/>}/>
                 <Route path='inicial' element={<Inicial/>}/>
-
                 <Route path='/inicial/profdisciplina' element={<DisciplinasProfessor/>}/>
 
                 <Route path='/inicial/disciplina' element={<DisciplinasGestor/>}/>
@@ -53,6 +53,8 @@ export function Rotas(){
                 <Route path='/inicial/profreserva' element={<ReservaProfessor/>}/>
                 <Route path='reservas' element={<ReservaGestor/>}/>
                 <Route path='cadastrarreserva' element={<ReservaCadastrar/>}/>
+                <Route path='/editarreserva/:id' element={<ReservaEditar/>}/>
+
 
                 {/* <Route path='reservasgestor' element={<ReservasGestor/>}/> */}
             </Routes>    
