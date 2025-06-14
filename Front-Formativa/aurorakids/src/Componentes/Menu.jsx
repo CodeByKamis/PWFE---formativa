@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 export function Menu(){
     const tipo = localStorage.getItem('tipo');
+    // é um tipo de link com if/else, se o usario for do tipo P (professor) é um link se não (:) é outro link
     const linkDiscplina = tipo === 'P'? 'profdisciplina' : 'disciplina';
 
     const linkReserva = tipo === 'P'? 'profreserva' : '/reservas';

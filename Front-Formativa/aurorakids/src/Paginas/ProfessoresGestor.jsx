@@ -1,22 +1,27 @@
-import axios from 'axios';
+import axios from 'axios';//FAZ A REQUISIÇÃO DA API
 import React, { useState, useEffect } from 'react';
-import estilos from './DisciplinasGestor.module.css';
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
-import { Link } from 'react-router-dom';
-import more from '../assets/more.svg';
-import edit from '../assets/edit.svg';
-import dell from '../assets/dell.svg';
+//usesate guarda valores e useeffect roda as coisas automatico como a mudanca de um dado sem recarregar a pagina
+import estilos from './DisciplinasGestor.module.css'; //estilização css
+import { BarraPg } from '../Componentes/BarraPg'; //cabeçalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
+import { Link } from 'react-router-dom'; //permite criar link para navegação
+import more from '../assets/more.svg'; //icone de adicionar (adicionar professor)
+import edit from '../assets/edit.svg'; //icone de editar (editar professor)
+import dell from '../assets/dell.svg'; //icone de deletar (deletar professor)
 
 export function ProfessoresGestor() {
+  //armazena os professores
   const [professores, setProfessores] = useState([]);
+  //controla o carregamento
   const [loading, setLoading] = useState(true);
+  //armazena os erros
   const [erro, setErro] = useState(null);
 
   useEffect(() => {
+    //carrega os prof quando abre a pagina
     fetchProfessores();
   }, []);
-
+//busca os prof no backend
   function fetchProfessores() {
     const token = localStorage.getItem('access_token');
     setLoading(true);
@@ -27,20 +32,23 @@ export function ProfessoresGestor() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        //filtra os usuarios do tipo p = professor
         const profs = response.data.filter((user) => user.tipo === 'P');
         setProfessores(profs);
         setLoading(false);
       })
       .catch((error) => {
+        // se der errado: 
         console.error('Erro ao buscar professores:', error);
         setErro('Erro ao carregar os professores.');
         setLoading(false);
       });
   }
-
+//funcao para excluir o professor
   function excluirProfessor(id) {
     const confirmar = window.confirm(
       'Tem certeza que deseja excluir este professor?'
+      //tratativa de erro
     );
     if (!confirmar) return;
 
@@ -58,9 +66,10 @@ export function ProfessoresGestor() {
       .catch((error) => {
         console.error('Erro ao excluir professor:', error);
         alert('Erro ao excluir professor.');
+        //se der errado
       });
   }
-
+//retornado na tela do usuario
   return (
     <>
       <BarraPg />

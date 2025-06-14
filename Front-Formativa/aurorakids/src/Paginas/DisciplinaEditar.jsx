@@ -1,12 +1,15 @@
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
-import estilos from './DisciplinaEditar.module.css';
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
+import { useForm } from 'react-hook-form'; //criar formulario
+import { z } from 'zod'; //valida tudo o que a gente digita
+import { zodResolver } from '@hookform/resolvers/zod'; //conecta o zod e o react-hook-form
+import axios from 'axios'; //faz requisição na api
+import estilos from './DisciplinaEditar.module.css'; //estilização css
+import { useState, useEffect } from 'react'; 
+//usesate guarda valores e useeffect roda as coisas automatico como a mudanca de um dado sem recarregar a pagina
+import { useParams, useNavigate } from 'react-router-dom'; //useparams pega dados da url e o outro leva o usuario para outra pagina
+import { BarraPg } from '../Componentes/BarraPg'; //cabecalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
+
+//configurando a permissão minima e máxima de entrada de dados
 const schemaDisciplina = z.object({
     nome: z.string()
         .min(1, 'Informe ao menos um caractere')
@@ -30,7 +33,7 @@ const schemaDisciplina = z.object({
         invalid_type_error: 'Selecione um professor'
             }).min(1, 'Selecione um professor')
 });
- 
+//iniciando a função
 export function DisciplinaEditar() {
  
     const [professores, setProfessores] = useState([]);
@@ -45,7 +48,8 @@ export function DisciplinaEditar() {
     } = useForm({
         resolver: zodResolver(schemaDisciplina)
     });
- 
+
+ // pegar autorização de acesso
     useEffect(() => {
         async function buscarProfessores() {
             try {
@@ -63,20 +67,21 @@ export function DisciplinaEditar() {
  
                 // Preenche o formulário
                 reset(resDisciplina.data);
- 
+            //caso dê erro
             } catch (error) {
                 console.error("Erro ao carregar professores", error);
             }
         }
-        buscarProfessores();
+        buscarProfessores(); //chamando a função
     }, []);
- 
+    //puxando os dados através do token de acesso e da url que está no backend
     async function obterDadosFormulario(data) {
       console.log("Dados do formulário:", data);
         try {
             const token = localStorage.getItem('access_token');
  
             const response = await axios.put(
+                //é puxado os dados daquela disciplina em especifico para preenchimento automatico na tela de edicao
                 `http://127.0.0.1:8000/api/disciplina/${id}/`,
                 data,
                 {
@@ -86,12 +91,11 @@ export function DisciplinaEditar() {
                     }
                 }
             );
- 
+            //caso dê certo
             console.log('Disciplina editada com sucesso!', response.data);
             alert('Disciplina editada com sucesso!');
-            reset();
             navigate('/inicial/disciplina');
- 
+        //caso dê errado
         } catch (error) {
             console.error('Erro ao editar disciplina', error);
             alert("Erro ao editar disciplina");
@@ -100,10 +104,11 @@ export function DisciplinaEditar() {
  
     return (
         <>
+            {/* esse é o cabecalho */}
             <BarraPg/>
 
-
             <div className={estilos.conteiner}>                 
+                {/* formulário para editar as disciplinas */}
                 <form className={estilos.loginForm} onSubmit={handleSubmit(obterDadosFormulario)}>
                         <h2 className={estilos.titulo}>Editar a Disciplina</h2>
                         <label className ={estilos.nomeCampo} >Nome da Disciplina</label>
@@ -149,7 +154,7 @@ export function DisciplinaEditar() {
                 
                         <label className ={estilos.nomeCampo}>Professor</label>
                         <select className={estilos.inputField}
-                        {...register('professor', { valueAsNumber: true })}>
+                            {...register('professor', { valueAsNumber: true })}>
                             <option  value="">Selecione um professor</option>
                             {professores.map((prof) => (
                                 <option className={estilos.inputField} key={prof.id} value={prof.id}>

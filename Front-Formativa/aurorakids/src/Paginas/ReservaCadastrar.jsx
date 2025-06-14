@@ -1,24 +1,42 @@
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'; //faz formulario
 import estilos from './DisciplinaCadastrar.module.css'; // reutilizando estilos
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
+import { z } from 'zod'; //valida tudo o que é digitado
+import { zodResolver } from '@hookform/resolvers/zod'; //conecta o zod e o react-hook-form
+import axios from 'axios'; //faz a requisição da api
 import { useState, useEffect } from 'react';
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
+//usesate guarda valores e useeffect roda as coisas automatico como a mudanca de um dado sem recarregar a pagina
+import { BarraPg } from '../Componentes/BarraPg'; //cabecalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
+import { useNavigate } from 'react-router-dom'; //navegar entre as telas
 
+//configurando a permissão minima e máxima de entrada de dados
 const schemaReserva = z.object({
-  professor: z.number({ invalid_type_error: 'Selecione um professor' }).min(1, 'Selecione um professor'),
-  sala_reservada: z.number({ invalid_type_error: 'Selecione uma sala' }).min(1, 'Selecione uma sala'),
-  disciplina: z.number({ invalid_type_error: 'Selecione uma disciplina' }).min(1, 'Selecione uma disciplina'),
+  professor: z.number({ invalid_type_error: 'Selecione um professor' })
+  .min(1, 'Selecione um professor'),
+
+  sala_reservada: z.number({ invalid_type_error: 'Selecione uma sala' })
+  .min(1, 'Selecione uma sala'),
+
+  disciplina: z.number({ invalid_type_error: 'Selecione uma disciplina' })
+  .min(1, 'Selecione uma disciplina'),
+
   periodo: z.enum(['M', 'T', 'Noite'], { errorMap: () => ({ message: 'Selecione um período' }) }),
-  data_inicio: z.string().min(1, 'Informe a data de início'),
-  data_termino: z.string().min(1, 'Informe a data de término'),
+
+  data_inicio: z.string()
+  .min(1, 'Informe a data de início'),
+
+  data_termino: z.string()
+  .min(1, 'Informe a data de término'),
 });
 
 export function ReservaCadastrar() {
+  //permitir navegação entre pagina
+  const navigate = useNavigate();
+  //guarda os prof
   const [professores, setProfessores] = useState([]);
+  //guarda as sala
   const [salas, setSalas] = useState([]);
+  //guarda as disciplina
   const [disciplinas, setDisciplinas] = useState([]);
 
   const {
@@ -35,29 +53,30 @@ export function ReservaCadastrar() {
       try {
         const token = localStorage.getItem('access_token');
         
-        // Buscar professores
+        // pegas os professores
         const resProfessores = await axios.get('http://127.0.0.1:8000/api/usuario/', {
           headers: { Authorization: `Bearer ${token}` },
           params: { tipo: 'P' }, // opcional se a API filtra, senão filtrar no front
         });
         setProfessores(resProfessores.data.filter(u => u.tipo === 'P'));
 
-        // Buscar salas
+        // pegas as salas
         const resSalas = await axios.get('http://127.0.0.1:8000/api/sala/', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSalas(resSalas.data);
 
-        // Buscar disciplinas
+        // pegar as disciplinas
         const resDisciplinas = await axios.get('http://127.0.0.1:8000/api/disciplina/', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setDisciplinas(resDisciplinas.data);
-
+        //se der errado
       } catch (error) {
         console.error('Erro ao buscar dados para cadastro', error);
       }
     }
+    //chamando a funcao
     buscarDados();
   }, []);
 
@@ -81,8 +100,10 @@ export function ReservaCadastrar() {
           'Content-Type': 'application/json',
         },
       });
+      //se der certo aparece o alerta e faz a navegacao
       alert('Reserva cadastrada com sucesso!');
-      reset();
+      navigate('/reservas');
+      //se der erro mostra a mensagem
     } catch (error) {
       console.error('Erro ao cadastrar reserva', error);
       if (error.response?.data) {
@@ -92,7 +113,7 @@ export function ReservaCadastrar() {
       }
     }
   }
-
+//retornando na tela do usuario
   return (
     <>
       <BarraPg />

@@ -1,23 +1,24 @@
-import estilos from './AgendarVisita.module.css';
-import { BarraNavegacao } from '../Componentes/BarraNavegacao';
-import { Footer } from '../Componentes/Footer';
+import estilos from './AgendarVisita.module.css'; //estilização css
+import { BarraNavegacao } from '../Componentes/BarraNavegacao'; //cabecalho
+import { Footer } from '../Componentes/Footer';// footer da pagina
+import { useNavigate } from 'react-router-dom'; //para navegar com outra tela
 
+//tela de formulario ficticio para visitar a escola aurora kids
 export function AgendarVisita() {
-  // Função chamada ao enviar o formulário
-  function handleSubmit(event) {
-    event.preventDefault(); // impede o comportamento padrão de enviar o form e recarregar a página
+  const navigate = useNavigate();
+
+  function handleSubmit(event) { event.preventDefault();
     alert('Formulário enviado com sucesso!');
+    navigate('/');
   }
 
   return (
     <>
       <BarraNavegacao />
-
       <div className={estilos.container}>
         <div>
             <h2 className={estilos.titulo}>AGENDAR VISITA</h2>
             <p className={estilos.subtitulo}>Preencha o formulário para agendar uma visita</p>
-
         </div>
         
         <form onSubmit={handleSubmit} className={estilos.loginform}>
@@ -52,9 +53,9 @@ export function AgendarVisita() {
           />
 
           <div className={estilos.icones}>
-            <button className={estilos.submitButton} type="submit">
-              Agendar Visita
-            </button>
+              <button className={estilos.submitButton} type="submit">
+                Agendar Visita
+              </button>
           </div>
 
           <div className={estilos.obs}>
@@ -62,8 +63,7 @@ export function AgendarVisita() {
           </div>
         </form>
       </div>
-
-      <Footer />
+      <Footer/>
     </>
   );
 }

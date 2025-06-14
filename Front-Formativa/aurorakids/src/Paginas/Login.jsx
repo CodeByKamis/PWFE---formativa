@@ -6,15 +6,15 @@ import { z } from 'zod';
 // z = zod VAI FALR COMO VAMOS VALIDAR O FORMULARO DE PRENCHIMENTO
 import { zodResolver } from '@hookform/resolvers/zod';
 // ZODRESOLVER - Ele manda as mensagens de erro para a tela do usuario
-import estilos from './Login.module.css';
-import { BarraNavegacao } from '../Componentes/BarraNavegacao';
-import { Footer } from '../Componentes/Footer';
-import { useNavigate } from 'react-router-dom';
+import estilos from './Login.module.css'; //estilização css
+import { BarraNavegacao } from '../Componentes/BarraNavegacao'; //cabecalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
+import { useNavigate } from 'react-router-dom';//permite fazer a navegcação entre as telas
 
 // vai validando as informações que vai receber do usuario
 
 
-
+//configurando a permissão minima e máxima de entrada de dados
 export function Login(){
     
     const navigate = useNavigate()
@@ -74,6 +74,7 @@ export function Login(){
 
     return(
         <>
+        {/* cabecalho exclusivo para usuarios visitante (não é P e nem G) */}
             <BarraNavegacao/>
         
             <div className={estilos.container}>

@@ -1,26 +1,48 @@
-import { useForm } from 'react-hook-form';
-import estilos from './DisciplinaCadastrar.module.css';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
-
+import { useForm } from 'react-hook-form'; //cria formulario
+import estilos from './DisciplinaCadastrar.module.css'; //estilização css
+import { z } from 'zod'; //valida tudo o que é diigitado
+import { zodResolver } from '@hookform/resolvers/zod'; //ele junta o zod e o react-hook-form
+import axios from 'axios'; //faz requisição na api
+import { BarraPg } from '../Componentes/BarraPg'; //cabeçalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
+import { useNavigate } from 'react-router-dom'; //para navegar entre outras paginas
+//configurando o tipo e a permissão minima e máxima de entrada de dados
 const schemaGestor = z.object({
-  first_name: z.string().min(1, 'Informe o primeiro nome').max(255),
-  last_name: z.string().min(1, 'Informe o sobrenome').max(255),
-  username: z.string().min(3, 'Informe o username').max(150),
-  password: z.string().min(6, 'A senha deve ter ao menos 6 caracteres'),
+  first_name: z.string()
+  .min(1, 'Informe o primeiro nome')
+  .max(255),
+
+  last_name: z.string()
+  .min(1, 'Informe o sobrenome')
+  .max(255),
+
+  username: z.string()
+  .min(3, 'Informe o username')
+  .max(150),
+
+  password: z.string()
+  .min(6, 'A senha deve ter ao menos 6 caracteres'),
   ni: z
     .number({ invalid_type_error: 'NI deve ser um número' })
     .int('NI deve ser inteiro')
     .positive('NI deve ser positivo'),
-  telefone: z.string().max(20, 'Máximo 20 caracteres').optional(),
-  data_nascimento: z.string().min(10, 'Informe a data de nascimento no formato YYYY-MM-DD'),
-  data_contratacao: z.string().min(10, 'Informe a data de contratação no formato YYYY-MM-DD'),
-});
 
+
+  telefone: z.string()
+  .max(20, 'Máximo 20 caracteres')
+  .optional(),
+
+  data_nascimento: z.string()
+  .min(10, 'Informe a data de nascimento no formato YYYY-MM-DD'),
+
+  data_contratacao: z.string()
+  .min(10, 'Informe a data de contratação no formato YYYY-MM-DD'),
+
+});
+// iniciando a funcao para cadastrar gestores
 export function GestoresCadastrar() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -29,7 +51,7 @@ export function GestoresCadastrar() {
   } = useForm({
     resolver: zodResolver(schemaGestor),
   });
-
+// permissao para enviar o formulario sendo tipo G
   async function enviarFormulario(data) {
     try {
       const token = localStorage.getItem('access_token');
@@ -50,15 +72,17 @@ export function GestoresCadastrar() {
           },
         }
       );
+      //se der certo
       alert('Gestor(a) cadastrado com sucesso!');
-      reset();
+      navigate('/gestores');
       console.log('Gestor criado:', response.data);
     } catch (error) {
       console.error('Erro ao cadastrar gestor:', error);
       alert('Erro ao cadastrar gestor');
+      //se der errado
     }
   }
-
+// retornado para a tela do usuario
   return (
     <>
       <BarraPg />

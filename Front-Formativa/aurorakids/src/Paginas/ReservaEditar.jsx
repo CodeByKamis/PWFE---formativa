@@ -1,28 +1,45 @@
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'; //faz formulario
 import estilos from './DisciplinaEditar.module.css'; // Reaproveitando os estilos
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
+import { z } from 'zod'; //valida tudo o que é digitado
+import { zodResolver } from '@hookform/resolvers/zod'; //conecta o zod e o react-hook-form
+import axios from 'axios'; //faz requisição na api
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
+//usesate guarda valores e useeffect roda as coisas automatico como a mudanca de um dado sem recarregar a pagina
+import { useParams, useNavigate } from 'react-router-dom'; //pega os parametros que vem da url e faz a navegação entre as paginas
+import { BarraPg } from '../Componentes/BarraPg'; //cabecalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
 
+//configurando a permissão minima e máxima de entrada de dados
 const schemaReserva = z.object({
-  professor: z.number({ invalid_type_error: 'Selecione um professor' }).min(1, 'Selecione um professor'),
-  sala_reservada: z.number({ invalid_type_error: 'Selecione uma sala' }).min(1, 'Selecione uma sala'),
-  disciplina: z.number({ invalid_type_error: 'Selecione uma disciplina' }).min(1, 'Selecione uma disciplina'),
+  professor: z.number({ invalid_type_error: 'Selecione um professor' })
+  .min(1, 'Selecione um professor'),
+
+  sala_reservada: z.number({ invalid_type_error: 'Selecione uma sala' })
+  .min(1, 'Selecione uma sala'),
+
+  disciplina: z.number({ invalid_type_error: 'Selecione uma disciplina' })
+  .min(1, 'Selecione uma disciplina'),
+
   periodo: z.enum(['M', 'T', 'Noite'], { errorMap: () => ({ message: 'Selecione um período' }) }),
-  data_inicio: z.string().min(1, 'Informe a data de início'),
-  data_termino: z.string().min(1, 'Informe a data de término'),
+
+  data_inicio: z.string()
+  .min(1, 'Informe a data de início'),
+
+  data_termino: z.string()
+  .min(1, 'Informe a data de término'),
 });
 
 export function ReservaEditar() {
-  const [professores, setProfessores] = useState([]);
-  const [salas, setSalas] = useState([]);
-  const [disciplinas, setDisciplinas] = useState([]);
-  const { id } = useParams();
+  //permitir navegação entre pagina
   const navigate = useNavigate();
+  //guarda professores
+  const [professores, setProfessores] = useState([]);
+  //guarda sala
+  const [salas, setSalas] = useState([]);
+  //guarda disciplina
+  const [disciplinas, setDisciplinas] = useState([]);
+  //guarda o id
+  const { id } = useParams();
 
   const {
     register,
@@ -32,40 +49,41 @@ export function ReservaEditar() {
   } = useForm({
     resolver: zodResolver(schemaReserva),
   });
-
+//iniciando a funcao
   useEffect(() => {
     async function buscarDados() {
       try {
         const token = localStorage.getItem('access_token');
 
-        // Buscar professores
+        // chamar professores
         const resProfessores = await axios.get('http://127.0.0.1:8000/api/usuario/', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProfessores(resProfessores.data.filter(u => u.tipo === 'P'));
 
-        // Buscar salas
+        // chamar as salas
         const resSalas = await axios.get('http://127.0.0.1:8000/api/sala/', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setSalas(resSalas.data);
 
-        // Buscar disciplinas
+        // chamar as disciplinas
         const resDisciplinas = await axios.get('http://127.0.0.1:8000/api/disciplina/', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setDisciplinas(resDisciplinas.data);
 
-        // Buscar dados da reserva atual
+        // procura os dados da reserva atual
         const resReserva = await axios.get(`http://127.0.0.1:8000/api/reservas/${id}/`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        reset(resReserva.data);  // Preenche o formulário com os dados existentes
-
+        reset(resReserva.data);  // ele preenche o formulário com os dados que tem de forma automatica
+          //se der erro mostra a mensagem
       } catch (error) {
         console.error('Erro ao carregar dados da reserva', error);
       }
     }
+    //chamando a funcao
     buscarDados();
   }, []);
 
@@ -88,10 +106,10 @@ export function ReservaEditar() {
           'Content-Type': 'application/json',
         },
       });
-
+      // se der certo ele mostra a mensagem e faz a navegacao
       alert('Reserva editada com sucesso!');
       navigate('/reservas');
-
+      //se der erro mostra a mensagem de erro
     } catch (error) {
       console.error('Erro ao editar reserva', error);
       if (error.response?.data) {
@@ -101,7 +119,7 @@ export function ReservaEditar() {
       }
     }
   }
-
+//retornando na tela do usuario
   return (
     <>
       <BarraPg />

@@ -1,15 +1,13 @@
-import estilos from './FaleConosco.module.css';
-import { BarraNavegacao } from '../Componentes/BarraNavegacao';
-import { Footer } from '../Componentes/Footer';
-import { Link } from 'react-router-dom';
-import criancas_sentadas from '../assets/criancas_sentadas.png';
-import independentes from '../assets/independentes.png';
-import tecnologia from '../assets/tecnologia.png';
-import analitico from '../assets/analitico.png';
-import aula_criancas from '../assets/aula_criancas.png';
+import estilos from './FaleConosco.module.css'; //estilização css
+import { BarraNavegacao } from '../Componentes/BarraNavegacao'; //cabecalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
+import { Link } from 'react-router-dom'; //permite utilizar link para navegacao
+import criancas_sentadas from '../assets/criancas_sentadas.png'; //imagem
+import aula_criancas from '../assets/aula_criancas.png'; //imagem
 export function FaleConosco(){
     return(
         <>
+        {/* esse é o cabeçalho */}
             <BarraNavegacao/>
             <main className={estilos.container}>
                 <section className={estilos.apresentacao}>
@@ -21,6 +19,7 @@ export function FaleConosco(){
                         </div>
 
                         <div className={estilos.texto}>
+                            {/* informações de contato */}
 
                             <address className={estilos.contato}>
                                 <p className={estilos.contato_titulo}>TELEFONE:</p>
@@ -47,7 +46,7 @@ export function FaleConosco(){
                     <img className={estilos.apresentacao_imagem} src={criancas_sentadas} alt="Crianças na sal de aula sentadas em suas mesas e sorrindo para a câmera" />
                 </section>
 
-
+                {/* seção de chamada para fazer visita na aurora kids */}
                 <section className={estilos.visita}>
 
                     <div className={estilos.visita_div}>

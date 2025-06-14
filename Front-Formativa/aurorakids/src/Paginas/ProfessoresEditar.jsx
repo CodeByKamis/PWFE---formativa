@@ -1,28 +1,52 @@
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
-import estilos from './DisciplinaEditar.module.css';
+import { z } from 'zod'; //valida as informacoes
+import { zodResolver } from '@hookform/resolvers/zod'; //junta o zod e o react-hook-form
+import axios from 'axios';//faz a resquisição na api
+import estilos from './DisciplinaEditar.module.css';//estilização css
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
+//usesate guarda valores e useeffect roda as coisas automatico como a mudanca de um dado sem recarregar a pagina
+import { useParams, useNavigate } from 'react-router-dom'; //pega o parametro da url e faz a navegacao entr as telas
+import { BarraPg } from '../Componentes/BarraPg'; //cabecalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
 
+//configurando a permissão minima e máxima de entrada de dados
 const schemaProfessorEditar = z.object({
-  first_name: z.string().min(1, 'Informe o primeiro nome').max(255),
-  last_name: z.string().min(1, 'Informe o sobrenome').max(255),
-  username: z.string().min(3, 'Informe o username').max(150),
-  password: z.string().min(6, 'A senha deve ter ao menos 6 caracteres').optional(),
-  ni: z.number({ invalid_type_error: 'NI deve ser um número' }).int('NI deve ser inteiro').positive('NI deve ser positivo'),
-  telefone: z.string().max(20, 'Máximo 20 caracteres').optional(),
-  data_nascimento: z.string().min(10, 'Informe a data de nascimento no formato YYYY-MM-DD'),
-  data_contratacao: z.string().min(10, 'Informe a data de contratação no formato YYYY-MM-DD'),
+  first_name: z.string()
+  .min(1, 'Informe o primeiro nome')
+  .max(255),
+
+  last_name: z.string()
+  .min(1, 'Informe o sobrenome')
+  .max(255),
+
+  username: z.string()
+  .min(3, 'Informe o username')
+  .max(150),
+
+  password: z.string()
+  .min(6, 'A senha deve ter ao menos 6 caracteres')
+  .optional(),
+
+  ni: z.number({ invalid_type_error: 'NI deve ser um número' })
+  .int('NI deve ser inteiro')
+  .positive('NI deve ser positivo'),
+
+  telefone: z.string()
+  .max(20, 'Máximo 20 caracteres')
+  .optional(),
+
+  data_nascimento: z.string()
+  .min(10, 'Informe a data de nascimento no formato YYYY-MM-DD'),
+
+  data_contratacao: z.string()
+  .min(10, 'Informe a data de contratação no formato YYYY-MM-DD'),
 });
 
 export function ProfessoresEditar() {
-  const { id } = useParams();
+  const { id } = useParams(); 
+  //pega o id do prof pela url
   const navigate = useNavigate();
-
+//permite navegacao entre telas
   const {
     register,
     handleSubmit,
@@ -31,7 +55,7 @@ export function ProfessoresEditar() {
   } = useForm({
     resolver: zodResolver(schemaProfessorEditar)
   });
-
+//busca os dados do prof 
   useEffect(() => {
     async function buscarProfessor() {
       try {
@@ -40,7 +64,7 @@ export function ProfessoresEditar() {
         const resProfessores = await axios.get(`http://127.0.0.1:8000/api/usuario/${id}/`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-
+        //preenche o formulario com os dados do prof que vier da api
         reset(resProfessores.data);
       } catch (error) {
         console.error("Erro ao carregar professor(a)", error);
@@ -48,10 +72,11 @@ export function ProfessoresEditar() {
     }
 
     if (id) {
+      //chamando a funcao se tiver id, ou seja se for do tipo de editar
       buscarProfessor();
     }
   }, [id, reset]);
-
+//funcao para enviar o formulario
   async function obterDadosFormulario(data) {
     try {
       const token = localStorage.getItem('access_token');
@@ -61,7 +86,7 @@ export function ProfessoresEditar() {
         tipo: 'P',
         telefone: data.telefone || null
       };
-
+      //faz a edicao
       const response = await axios.put(
         `http://127.0.0.1:8000/api/usuario/${id}/`,
         payload,
@@ -74,21 +99,22 @@ export function ProfessoresEditar() {
       );
 
       alert('Professor(a) editado(a) com sucesso!');
-      reset();
+      navigate('/professores');
+      //se der certo, o usuario é direcionado para essa pagina depois
     } catch (error) {
       console.error('Erro ao editar professor(a)', error);
       alert("Erro ao editar professor(a)");
+      //se der errado
     }
   }
-
+//mostrado na tela para o usuario
   return (
     <>
       <BarraPg />
       <div className={estilos.conteiner}>
+        {/* formulario para editar o professor */}
         <form className={estilos.loginForm} onSubmit={handleSubmit(obterDadosFormulario)}>
             <h2 className={estilos.titulo}>Editar Professor</h2>
-
-            {/* Os campos continuam os mesmos, apenas alterando o botão e validações como mostrado acima */}
 
             <label className={estilos.nomeCampo}>Primeiro Nome</label>
             <input {...register('first_name')} className={estilos.inputField} placeholder="Primeiro nome" />
@@ -124,7 +150,7 @@ export function ProfessoresEditar() {
                 type="number"
                 className={estilos.inputField}
                 {...register('ni', { valueAsNumber: true })}
-                placeholder="Número único"
+                placeholder="N de Identificação"
             />
             {errors.ni && <p className={estilos.error}>{errors.ni.message}</p>}
 

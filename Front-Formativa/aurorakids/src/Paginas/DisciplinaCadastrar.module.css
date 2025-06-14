@@ -1,8 +1,10 @@
+/* fonte */
 .poppins-bold {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
+/* principal */
 .conteiner{
     display: flex;
     align-items: center;
@@ -10,6 +12,7 @@
     height: 789px;
     font-family: "Poppins", sans-serif;
 }
+/* formulario */
 .loginForm{
     width: 950px;
     height: 800px;
@@ -40,7 +43,7 @@
     border-radius: 6px;
 
 }
-
+/* botao */
 .submitButton{
     margin-top: 10px;
     background-color: #93D9D8;

@@ -1,19 +1,21 @@
-import axios from 'axios';
+import axios from 'axios'; //faz requisição na api
 import React, { useState, useEffect } from 'react';
-import estilos from './SalasGestores.module.css'; // reutilizando o CSS
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
-import { Link } from 'react-router-dom';
-import more from '../assets/more.svg';
-import edit from '../assets/edit.svg';
-import dell from '../assets/dell.svg';
+//usesate guarda valores e useeffect roda as coisas automatico como a mudanca de um dado sem recarregar a pagina
+import estilos from './SalasGestores.module.css'; // reutilizando o css
+import { BarraPg } from '../Componentes/BarraPg'; //chamando componente cabecalho
+import { Footer } from '../Componentes/Footer'; //chamando componente footer
+import { Link } from 'react-router-dom'; //para conseguir utilizar link para navegacao
+import more from '../assets/more.svg'; //icone de adicionar (adicionar sala)
+import edit from '../assets/edit.svg'; //icone de editar (editar sala)
+import dell from '../assets/dell.svg'; //icone de excluir (excluir sala)
 
 export function SalasGestores() {
+  //guarda as salas
   const [salas, setSalas] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem('access_token');
-
+    //chama as salas
     axios.get('http://127.0.0.1:8000/api/sala/', {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -22,31 +24,34 @@ export function SalasGestores() {
     .then(response => {
       setSalas(response.data);
     })
+    //se der errado
     .catch(error => {
       console.error("Erro ao buscar salas", error);
       alert("Erro ao carregar salas. Verifique se você tem permissão.");
     });
   }, []);
-
+//funcao para excluir a sala
   function excluirSala(id) {
     const confirmar = window.confirm('Tem certeza que deseja excluir esta sala?');
     if (!confirmar) return;
 
     const token = localStorage.getItem('access_token');
-
+    //pega a sala na api pelo id
     axios.delete(`http://127.0.0.1:8000/api/sala/${id}/`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
+    //se der certo
     .then(() => {
       setSalas(prev => prev.filter(s => s.id !== id));
       alert("Sala excluída com sucesso!");
     })
+    //se der errado
     .catch(error => {
       console.error("Erro ao excluir sala", error);
       alert("Erro ao excluir sala.");
     });
   }
-
+//retornando na tela para o usuario ver
   return (
     <>
       <BarraPg />

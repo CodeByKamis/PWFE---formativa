@@ -1,26 +1,49 @@
-import { useForm } from 'react-hook-form';
-import estilos from './DisciplinaCadastrar.module.css';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
+import { useForm } from 'react-hook-form'; //permite criar formulario
+import estilos from './DisciplinaCadastrar.module.css'; //estilização css
+import { z } from 'zod'; //valida as informacoes
+import { zodResolver } from '@hookform/resolvers/zod'; //junta o zod com o react-hook-form
+import axios from 'axios';//faz requisição na api
+import { BarraPg } from '../Componentes/BarraPg'; //cabecalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
+import { useNavigate } from 'react-router-dom'; //faz navegacao entre as paginas
 
+//configurando a permissão minima e máxima de entrada de dados
 const schemaProfessor = z.object({
-  first_name: z.string().min(1, 'Informe o primeiro nome').max(255),
-  last_name: z.string().min(1, 'Informe o sobrenome').max(255),
-  username: z.string().min(3, 'Informe o username').max(150),
-  password: z.string().min(6, 'A senha deve ter ao menos 6 caracteres'),
+  first_name: z.string()
+  .min(1, 'Informe o primeiro nome')
+  .max(255),
+  
+  last_name: z.string()
+  .min(1, 'Informe o sobrenome')
+  .max(255),
+
+  username: z.string()
+  .min(3, 'Informe o username')
+  .max(150),
+
+  password: z.string()
+  .min(6, 'A senha deve ter ao menos 6 caracteres'),
+
   ni: z
     .number({ invalid_type_error: 'NI deve ser um número' })
     .int('NI deve ser inteiro')
     .positive('NI deve ser positivo'),
-  telefone: z.string().max(20, 'Máximo 20 caracteres').optional(),
-  data_nascimento: z.string().min(10, 'Informe a data de nascimento no formato YYYY-MM-DD'),
-  data_contratacao: z.string().min(10, 'Informe a data de contratação no formato YYYY-MM-DD'),
+
+  telefone: z.string()
+  .max(20, 'Máximo 20 caracteres')
+  .optional(),
+
+  data_nascimento: z.string()
+  .min(10, 'Informe a data de nascimento no formato YYYY-MM-DD'),
+
+  data_contratacao: z.string()
+  .min(10, 'Informe a data de contratação no formato YYYY-MM-DD'),
 });
 
 export function ProfessoresCadastrar() {
+  const navigate = useNavigate();
+  //navigate serve para navegar entre as paginas
+
   const {
     register,
     handleSubmit,
@@ -51,11 +74,13 @@ export function ProfessoresCadastrar() {
         }
       );
       alert('Professor(a) cadastrado com sucesso!');
-      reset();
+      navigate('/professores');
+      //caso de certo, o usuario será direcionado para outra pagina como acima
       console.log('Professor criado:', response.data);
     } catch (error) {
       console.error('Erro ao cadastrar professor:', error);
       alert('Erro ao cadastrar professor');
+      //se der errado
     }
   }
 
@@ -63,6 +88,7 @@ export function ProfessoresCadastrar() {
     <>
       <BarraPg />
       <div className={estilos.conteiner}>
+        {/* formulario para cadastrar um professor */}
         <form className={estilos.loginForm} onSubmit={handleSubmit(enviarFormulario)}>
           <h2 className={estilos.titulo}>Cadastro de Professor</h2>
 

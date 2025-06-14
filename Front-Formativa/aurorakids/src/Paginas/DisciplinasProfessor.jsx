@@ -1,9 +1,9 @@
 import axios from 'axios'; //axios é o que permite que chamemos uma API :D SEJA BEST DELE ( PÁGINA HTTP(S) )
 import React,{useState, useEffect} from 'react'; //state guarda o estado atual da variavel
 //effect mostra isso em tela
-import estilos from './DisciplinasProfessor.module.css';
-import { BarraPg } from '../Componentes/BarraPg';
-import { Footer } from '../Componentes/Footer';
+import estilos from './DisciplinasProfessor.module.css'; //estilização do css
+import { BarraPg } from '../Componentes/BarraPg'; //cabecalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
 
 
 
@@ -32,10 +32,12 @@ export function DisciplinasProfessor(){
         
     },[]);
 
-
+    // o que é retornado na tela do usuario
     return(
         <>
+        {/* esse é o cabeçalho */}
             <BarraPg/>
+            {/* informações que aparece para o usuario professor quando ele vê suas disciplinas */}
             <div className={estilos.containerCard}>
                 <h2 className={estilos.tituloCard}>Minhas Disciplinas</h2>
                 <div className={estilos.listaCard}>
@@ -47,7 +49,6 @@ export function DisciplinasProfessor(){
                             <p><strong>Carga Horária: </strong>{disciplina.carga_horaria}</p>
                         </div>
                     ))}
-
                 </div>
 
             </div>

@@ -1,3 +1,4 @@
+/* fonte */
 .poppins-bold {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -31,10 +32,17 @@
     margin-bottom: 30px;
 }
 
-.listaCard{
+/* .listaCard{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 2fr));
     gap:20px;
+    width: 100%;
+} */
+
+.listaCard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     width: 100%;
 }
 

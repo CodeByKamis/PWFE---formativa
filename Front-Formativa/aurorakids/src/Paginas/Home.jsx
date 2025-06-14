@@ -1,16 +1,18 @@
-import estilos from './Home.module.css';
-import { BarraNavegacao } from '../Componentes/BarraNavegacao';
-import { Footer } from '../Componentes/Footer';
-import { Link } from 'react-router-dom';
-import criancas_corredor from '../assets/criancas_corredor.png';
-import independentes from '../assets/independentes.png';
-import tecnologia from '../assets/tecnologia.png';
-import analitico from '../assets/analitico.png';
-import crianca_espaco from '../assets/crianca_espaco.png';
-import aula_criancas from '../assets/aula_criancas.png';
+import estilos from './Home.module.css'; //estilização css
+import { BarraNavegacao } from '../Componentes/BarraNavegacao'; //cabeçalho da pagina
+import { Footer } from '../Componentes/Footer'; //footer da pagina
+import { Link } from 'react-router-dom'; //para conseguir utilizar link para navegação
+import criancas_corredor from '../assets/criancas_corredor.png'; //imagem
+import independentes from '../assets/independentes.png'; //imagem
+import tecnologia from '../assets/tecnologia.png'; //imagem
+import analitico from '../assets/analitico.png'; //imagem
+import crianca_espaco from '../assets/crianca_espaco.png'; //imagem
+import aula_criancas from '../assets/aula_criancas.png'; //imagem
 export function Home(){
+    //retornado na tela do usuario
     return(
         <>
+        {/* esse cabecalho é exclusivo de usuario do tipo visitante (nem P e nem G) */}
             <BarraNavegacao/>
             <main className={estilos.container}>
                 <section className={estilos.apresentacao}>

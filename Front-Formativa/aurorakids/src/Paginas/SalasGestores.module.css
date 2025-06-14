@@ -1,3 +1,4 @@
+/* fonte */
 .poppins-bold {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -72,21 +73,15 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* REMOVIDO O MARGIN LEFT EXAGERADO DA COLUNA AÇÃO */
-/* .acao_cabecalho {
-  margin-left: 200px;
-} */
 
-/* Container da célula da coluna Ação */
 .tabeladados td:last-child {
   display: flex;
-  justify-content: flex-start; /* alinhado à esquerda para colar com texto "Ação" */
+  justify-content: flex-start;
   align-items: center;
-  gap: 10px; /* espaço entre os botões */
-  padding-left: 12px; /* leve espaçamento */
+  gap: 10px;
+  padding-left: 12px;
 }
 
-/* Ajuste no botão excluir para centralizar o conteúdo */
 .botaoExcluir {
   display: flex;
   align-items: center;
@@ -124,12 +119,11 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Ícones menores para caber melhor nos botões */
 .icone {
   width: 24px;
   height: 24px;
   padding: 0;
-  pointer-events: none; /* evita que clique no ícone atrapalhe o botão */
+  pointer-events: none;
 }
 
 .iconeAdd {
@@ -145,7 +139,6 @@
   margin-bottom: 15px;
 }
 
-/* Cards (caso use) */
 .containerCard {
   display: flex;
   font-family: "Poppins", sans-serif;
